@@ -1,11 +1,12 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from "../layout/MainLayout.astro"
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
 ---
+<MainLayout title="Farooq Zahid">
 
-<Layout>
-	<Welcome />
-</Layout>
+    <main class="container mx-auto text-center py-16">
+        <h1 class="text-5xl font-bold mb-6">Welcome to My Landing Page!</h1>
+        <p class="text-lg text-gray-700">This is a sample landing page with a header, navigation, and a button to your blog.</p>
+    </main>
+</MainLayout>
