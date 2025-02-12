@@ -8,9 +8,16 @@ body {
     height: 100%;
 }
 
-  
+body:has(section.min-h-screen) {
+    overflow-y: auto;
+}
 
-/* Active nav item */
+::selection {
+    background-color: #86efada0; 
+    color: #000; 
+}
+
+
 nav [data-active='true'] {
     background-color: #86efac;
 }

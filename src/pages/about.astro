@@ -1,8 +1,39 @@
 ---
+import ContactButtons from "../components/ContactButtons.astro";
 import Layout from "../layout/Layout.astro";
 ---
 
 <Layout title="About">
-  <h2 class="text-2xl font-semibold mt-6">About Me</h2>
-  <p class="mt-4">I’m a passionate developer building cool projects in Flutter, Astro, and more!</p>
+  <section class="min-h-screen flex items-center justify-center px-6 py-12">
+    <div class="max-w-2xl">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">About Me</h1>
+
+        <p class="text-lg leading-relaxed">
+            I'm <strong>Farooq Zahid</strong>, a passionate <strong>Flutter developer</strong> 
+            and tech enthusiast who loves turning ideas into functional, scalable applications. With a strong background in mobile app development, I specialize in creating intuitive, high-performance applications using 
+            <strong>Flutter, Dart</strong>, and modern backend technologies like 
+            <strong>Firebase</strong> and <strong>PocketBase</strong>.
+        </p>
+
+        <p class="text-lg leading-relaxed mt-4">
+            I thrive on <strong>solving complex problems</strong>, optimizing workflows, and building seamless user experiences. 
+            My portfolio includes projects like <strong>inventory management systems</strong>, <strong>real-time chat applications</strong>, 
+            and <strong>rent roll management platforms</strong>, all tailored to solve specific business challenges.
+        </p>
+
+        <p class="text-lg leading-relaxed mt-4">
+            Beyond development, I'm always exploring new technologies like 
+            <strong>Astro</strong> for web development, <strong>Go</strong> for backend services, and 
+            even <strong>game development in Godot</strong>. My curiosity fuels my drive to experiment, learn, and innovate continuously.
+        </p>
+
+        <p class="text-lg leading-relaxed mt-4">
+            When I'm not coding, I'm sharing knowledge, refining my freelancing skills on platforms like <strong>Upwork</strong>, 
+            or brainstorming ways to make technology more accessible and impactful.
+        </p>
+
+        <h2 class="text-2xl font-semibold mt-6 text-gray-900">Let's Connect!</h2>
+        <ContactButtons />
+    </div>
+  </section>
 </Layout>
