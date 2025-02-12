@@ -1,1 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Active nav item */
+nav [data-active='true'] {
+    @apply bg-green-300;
+}
+
+/* Gradient container */
+.gradients {
+    z-index: -1;
+    position: absolute;
+    height: 110vh; 
+    width: 100%;
+    will-change: transform;
+}
+
+/* Individual gradients */
+.gradient {
+    height: 500px;
+    width: 500px;
+    position: fixed;
+    border-radius: 100%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: float 6s infinite ease-in-out alternate;
+}
+
+/* Positioning of the gradients */
+.gradient:nth-child(1) {
+    top: 10%;
+    left: 0%;
+    background: radial-gradient(#f7ba2c, rgba(0,0,0,0));
+    animation-delay: 0s;
+}
+
+.gradient:nth-child(2) {
+    top: 0%;
+    right: 0%;
+    background: radial-gradient(#40c9ff, rgba(0,0,0,0));
+    animation-delay: 0s;
+}
+
+.gradient:nth-child(3) {
+    bottom: 10%;
+    right: 40%;
+    background: radial-gradient(#ea5459, rgba(0,0,0,0));
+    animation-delay: 0s;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: scale(1) translate(0px, 0px);
+    }
+    50% {
+        transform: scale(1.2) translate(30px, -30px);
+    }
+    100% {
+        transform: scale(1) translate(0px, 0px);
+    }
+}

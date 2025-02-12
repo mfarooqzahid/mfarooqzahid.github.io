@@ -1,4 +1,18 @@
 ---
+import Layout from "../layout/Layout.astro";
+
+---
+<Layout title="Blog">
+  <h2 class="text-2xl font-semibold mt-6">Latest Blog Posts</h2>
+  <ul class="mt-4 space-y-2">
+    <li>📝 <a href="#">Post 1: Learning Astro</a></li>
+    <li>💡 <a href="#">Post 2: Building a Portfolio</a></li>
+    <li>📌 <a href="#">Post 3: Flutter vs React Native</a></li>
+  </ul>
+</Layout>
+
+
+<!-- ---
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -18,4 +32,4 @@ const posts = await getCollection('blog');
       ))}
     </ul>
   </body>
-</html>
+</html> -->

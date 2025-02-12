@@ -1,0 +1,23 @@
+---
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <title>{title} | Farooq Zahid</title>
+  </head>
+  <body class="relative z-10">
+    <div class="gradients">
+      <div class="gradient"></div>
+      <div class="gradient"></div>
+      <div class="gradient"></div>
+    </div>
+
+    <Nav />
+      <main class="container mx-auto px-4 ">
+      <slot />
+    </main>
+  </body>
+</html>

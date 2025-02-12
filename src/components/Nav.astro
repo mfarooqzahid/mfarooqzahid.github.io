@@ -1,0 +1,53 @@
+---
+const pathName = Astro.url.pathname;
+---
+
+<div
+    class="h-20 bg-green w-full top-2 sticky flex items-center justify-between px-6"
+>
+    <!-- Avatar -->
+    <a
+        href="/"
+        class="w-16 h-16 p-1 border-3 border-green-200 rounded-full bg-transparent overflow-hidden"
+    >
+        <img
+            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg"
+            alt="Avatar"
+            class="w-full h-full object-cover rounded-full"
+        />
+    </a>
+
+    <!-- Navigation Tabs -->
+    <nav
+        class="flex justify-center space-x-6 text-lg font-medium bg-green-200 w-fit rounded-full"
+    >
+        <a
+            href="/about"
+            data-active={pathName === "/about"}
+            class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer"
+            >About</a
+        >
+        <a
+            href="/projects"
+            data-active={pathName === "/projects"}
+            class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer"
+            >Projects</a
+        >
+        <a
+            href="/blog"
+            data-active={pathName === "/blog"}
+            class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer"
+            >Blog</a
+        >
+    </nav>
+
+    <!-- Resume Button -->
+    <a
+        href="https://docs.google.com/document/d/18tG6asWRUC3altNbN6OxoKiyiYaCwhPqvVroyYRj8Vk/export?format=pdf
+"
+        download
+        class="w-32 py-4 px-3 text-center rounded-full transition bg-green-200 hover:bg-green-300 curso"
+    >
+        Resume
+    </a>
+</div>
