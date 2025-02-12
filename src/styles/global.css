@@ -12,7 +12,7 @@ body {
 
 /* Active nav item */
 nav [data-active='true'] {
-    @apply bg-green-300;
+    background-color: #86efac;
 }
 
 /* Gradient container */
