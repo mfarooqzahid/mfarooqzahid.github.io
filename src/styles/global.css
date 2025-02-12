@@ -4,8 +4,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+    overflow: hidden;
+    height: 100%;
 }
+
+  
 
 /* Active nav item */
 nav [data-active='true'] {
