@@ -20,6 +20,7 @@ const { title } = Astro.props;
   <meta property="og:url" content="https://farooqzahid.vercel.app" />
   <meta property="og:type" content="website" />
 
+
   <!-- Twitter Card Meta Tags (For Twitter Previews) -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Farooq Zahid - Flutter Developer" />
@@ -31,15 +32,11 @@ const { title } = Astro.props;
 
     <title>{title} | Farooq Zahid</title>
   </head>
-  <body class="relative z-10">
-    <div class="gradients">
-      <div class="gradient"></div>
-      <div class="gradient"></div>
-      <div class="gradient"></div>
-    </div>
+  <body class="min-h-screen overflow-auto">
+    
 
     <Nav />
-      <main class="container mx-auto px-4 ">
+      
       <slot />
     </main>
   </body>

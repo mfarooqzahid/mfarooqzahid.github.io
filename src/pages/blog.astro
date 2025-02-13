@@ -1,35 +1,33 @@
 ---
 import Layout from "../layout/Layout.astro";
+import { getCollection } from "astro:content";
 
+const posts = await getCollection("blog");
 ---
+
 <Layout title="Blog">
-  <h2 class="text-2xl font-semibold mt-6">Latest Blog Posts</h2>
-  <ul class="mt-4 space-y-2">
-    <li>📝 <a href="#">Post 1: Learning Astro</a></li>
-    <li>💡 <a href="#">Post 2: Building a Portfolio</a></li>
-    <li>📌 <a href="#">Post 3: Flutter vs React Native</a></li>
-  </ul>
-</Layout>
+  <section class="max-w-3xl mx-auto py-10 px-6">
+    <h1 class="text-3xl font-bold mb-6">Blog</h1>
 
-
-<!-- ---
-import { getCollection } from 'astro:content';
-
-const posts = await getCollection('blog');
----
-
-<html>
-  <head>
-    <title>My Blog</title>
-  </head>
-  <body>
-    <h1>Blog</h1>
-    <ul>
+    <ul class="space-y-6">
       {posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+        <li data-key={post.id} class="border-b pb-6 flex items-center gap-4">
+          
+          <div class="flex-1">
+            <a href={`/blog/${post.slug}`} class="block text-3xl font-bold   hover:underline">
+              {post.data.title}
+            </a>
+            <p class="text-gray-600 line-clamp-3">{post.data.description}</p>
+            <p class="text-sm text-gray-500 mt-1">{post.data.date}</p>
+
+            
+          </div>
+          {post.data.image && (
+            <img src={post.data.image} alt={post.data.title} class="w-50 h-30 object-cover rounded-lg" />
+
+          )}
         </li>
       ))}
     </ul>
-  </body>
-</html> -->
+  </section>
+</Layout>
