@@ -4,14 +4,16 @@
 @plugin '@tailwindcss/typography';
 
 body {
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    height: 100%;
+    font-family: 'Poppins', sans-serif;  
 }
 
-body:has(section.min-h-screen) {
-    overflow-y: auto;
-}
+::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scrollbar-width: none;
+  }
 
 ::selection {
     background-color: #86efada0; 
