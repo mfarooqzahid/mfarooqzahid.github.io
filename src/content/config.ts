@@ -5,11 +5,22 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()),
     image: z.string().optional(),
+  }),
+
+});
+
+const project = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    technologies: z.array(z.string()),
+    image: z.string(),
   }),
 });
 
 export const collections = {
-  blog
+  blog,
+  project, 
 };
