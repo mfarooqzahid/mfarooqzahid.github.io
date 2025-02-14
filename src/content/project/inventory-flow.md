@@ -10,27 +10,27 @@ image: "https://www.upwork.com/att/download/portfolio/persons/uid/17301873604724
 **Flexible Poly** is a **smart inventory management system** that helps manufacturers and suppliers **track stock levels, manage orders, and receive low-stock alerts**. It provides a **real-time dashboard, automated notifications, and seamless ordering** to streamline inventory operations.  
 
 ## **Key Features**  
-### ✅ **Client-Specific Inventory**  
+###  **Client-Specific Inventory**  
 - Each **client has a dedicated inventory** to track stock levels.  
 - Clients can **add, update, and manage products** in their inventory.  
 
-### 📊 **Real-Time Stock Tracking**  
+###  **Real-Time Stock Tracking**  
 - **Live updates** using Firestore streams.  
 - **Automatic stock adjustments** upon order fulfillment.  
 
-### 🔔 **Low Stock Alerts & Notifications**  
+###  **Low Stock Alerts & Notifications**  
 - Clients receive **push notifications** when stock reaches a critical level.  
 - Admins get **daily reports** on inventory status.  
 
-### 🛒 **Ordering & Reordering**  
+###  **Ordering & Reordering**  
 - Clients can **place orders** directly from the product details page.  
 - Pending orders are tracked, and **inventory updates automatically** when processed.  
 
-### 📄 **PDF Invoice Generation**  
+###  **PDF Invoice Generation**  
 - Orders can be exported as **PDF invoices** for record-keeping.  
 - **Professional, branded invoices** for easy documentation.  
 
-### 🔑 **Role-Based Access Control**  
+###  **Role-Based Access Control**  
 - **Admins** can manage clients and oversee inventory.  
 - **Clients** can only access their specific inventory.  
 
@@ -41,7 +41,7 @@ image: "https://www.upwork.com/att/download/portfolio/persons/uid/17301873604724
 - **Other:** Syncfusion for PDF generation & charts  
 
 ## **Screenshots & Demo**  
-[✨ Showcase your app with screenshots or a live demo link]  
+[ Showcase your app with screenshots or a live demo link]  
 
 ## **Conclusion**  
 Flexible Poly **simplifies inventory management** with **real-time tracking, automated alerts, and seamless ordering**—helping businesses stay on top of their stock efficiently.  

@@ -7,25 +7,29 @@ const posts = await getCollection("blog");
 
 <Layout title="Blog">
   <section class="max-w-3xl mx-auto py-10 px-6">
-    <h1 class="text-3xl font-bold mb-6">Blog</h1>
+    <h1 class="text-3xl font-bold mb-6 text-center md:text-left">Blog</h1>
 
     <ul class="space-y-6">
       {posts.map((post) => (
-        <li data-key={post.id} class="border-b pb-6 flex items-center gap-4">
+        <li data-key={post.id} class="border-b pb-6 flex flex-col md:flex-row items-center md:items-start gap-4">
           
-          <div class="flex-1">
-            <a href={`/blog/${post.slug}`} class="block text-3xl font-bold   hover:underline">
+          {/* Image on top for mobile, side for larger screens */}
+          {post.data.image && (
+            <img 
+              src={post.data.image} 
+              alt={post.data.title} 
+              class="w-full md:w-[150px] h-auto object-cover rounded-lg max-h-[150px]"
+            />
+          )}
+
+          {/* Text Content */}
+          <div class="flex-1 text-center md:text-left">
+            <a href={`/blog/${post.slug}`} class="block text-xl md:text-2xl font-bold hover:underline">
               {post.data.title}
             </a>
-            <p class="text-gray-600 line-clamp-3">{post.data.description}</p>
+            <p class="text-gray-600 line-clamp-3 text-sm md:text-base leading-relaxed">{post.data.description}</p>
             <p class="text-sm text-gray-500 mt-1">{post.data.date}</p>
-
-            
           </div>
-          {post.data.image && (
-            <img src={post.data.image} alt={post.data.title} class="w-50 h-30 object-cover rounded-lg" />
-
-          )}
         </li>
       ))}
     </ul>

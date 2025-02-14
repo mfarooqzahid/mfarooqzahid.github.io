@@ -17,11 +17,13 @@ const { Content } = await post.render();
 <Layout title={post.data.title}>
   <article class="min-h-screen flex flex-col">
     <div class="max-w-3xl mx-auto flex-grow py-20 px-6 overflow-auto">
+      <!-- Title -->
       <h1 class="text-3xl font-bold mb-2">{post.data.title}</h1>
       <p class="text-gray-500">
         {post.data.date} • {post.data.tags?.join(", ")}
       </p>
 
+      <!-- Image -->
       {post.data.image && (
         <img
           src={post.data.image}
@@ -30,6 +32,7 @@ const { Content } = await post.render();
         />
       )}
 
+      <!-- Content -->
       <Prose>
         <Content />
       </Prose>

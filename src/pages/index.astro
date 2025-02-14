@@ -4,22 +4,27 @@ import ContactButtons from "../components/ContactButtons.astro"
 ---
 
 <Layout title="Welcome">
-  <section class="fixed inset-0 flex flex-col items-center justify-center text-center text-black">
-    <div class="gradients overflow-hidden">
+  <section class="flex flex-col items-center justify-center text-center text-black min-h-screen px-6">
+    <div class="gradients absolute inset-0 overflow-hidden -z-10">
       <div class="gradient"></div>
       <div class="gradient"></div>
       <div class="gradient"></div>
     </div>
-    <div class="max-w-2xl">
-      <h2 class="text-2xl font-medium pb-3">Hi, I'm Farooq</h2>
-      <h1 class="text-5xl font-bold">Your Trusted Ally for Flutter App Development</h1>
 
-      <p class="text-lg mt-2 text-gray-700 pt-3">
+    <div class="max-w-2xl w-full">
+      <h2 class="text-xl sm:text-2xl font-medium pb-3">Hi, I'm Farooq</h2>
+      <h1 class="text-3xl sm:text-5xl font-bold leading-tight">
+        Your Trusted Ally for Flutter App Development
+      </h1>
+
+      <p class="text-base sm:text-lg mt-2 text-gray-700 pt-3">
         Welcome to my portfolio. Explore my projects, blog, and more!
       </p>
 
       <!-- Buttons -->
-      <ContactButtons />
+      <div class="mt-4">
+        <ContactButtons />
+      </div>
     </div>
   </section>
 </Layout>

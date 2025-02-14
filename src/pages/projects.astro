@@ -7,12 +7,12 @@ const projects = await getCollection("project");
 
 <Layout>
   <section class="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-    <h2 class="text-4xl font-bold mb-8">Projects</h2>
+    <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Projects</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
       {projects.map((project) => (
         <a 
           href={`/projects/${project.slug}`} 
-          class="block bg-white shadow-lg rounded-lg p-4 transition transform hover:shadow-xl hover:z-10"
+          class="block bg-white shadow-lg rounded-lg p-4 transition transform hover:shadow-xl "
         >
           {/* Image with 16:9 aspect ratio */}
           <div class="aspect-video overflow-hidden rounded-md mb-4">
