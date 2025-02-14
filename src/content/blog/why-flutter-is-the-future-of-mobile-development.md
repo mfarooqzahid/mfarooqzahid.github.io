@@ -6,8 +6,6 @@ tags: ["Flutter", "Mobile Development", "Cross-Platform"]
 image: "https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 ---
 
-# Why Flutter is the Future of Mobile Development 🚀  
-
 ## Introduction  
 The world of mobile app development is changing rapidly, and **Flutter** has emerged as a revolutionary framework that is reshaping how developers build applications.  
 
@@ -94,16 +92,3 @@ With such adoption, it’s clear that Flutter is not just a trend—it’s the f
 
 Flutter **outperforms** React Native and Xamarin when it comes to **speed, UI consistency, and development experience**.
 
----
-
-## **5. Getting Started with Flutter**  
-Want to build your first Flutter app? Here’s how:  
-
-### **Step 1: Install Flutter SDK**  
-Download it from [flutter.dev](https://flutter.dev/)  
-
-### **Step 2: Create a New Project**  
-```sh
-flutter create my_app
-cd my_app
-flutter run
