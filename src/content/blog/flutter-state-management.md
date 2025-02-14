@@ -117,17 +117,28 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 ```
 
 ---
+### **Choosing the Right State Management Solution**  
 
-## Choosing the Right State Management Solution
+#### **1. `setState`**  
+- **Best for**: Simple UI changes.  
+- **Complexity**: Low, easy to implement.  
+- **Performance**: High, but not ideal for complex apps.  
 
-| Approach  | Best For  | Complexity  | Performance |
-|-----------|----------|------------|-------------|
-| `setState` | Simple UI changes  | Low  | High |
-| Provider  | Small-Medium apps | Medium  | High |
-| Riverpod  | Scalable apps | Medium  | High |
-| Bloc  | Large-Scale Apps  | High  | High |
+#### **2. Provider**  
+- **Best for**: Small to medium-sized apps.  
+- **Complexity**: Medium, easier than Bloc but more structured than `setState`.  
+- **Performance**: High, recommended for moderate state management needs.  
 
----
+#### **3. Riverpod**  
+- **Best for**: Scalable applications.  
+- **Complexity**: Medium, improves upon Provider with better reusability.  
+- **Performance**: High, offers fine-grained state control.  
+
+#### **4. Bloc**  
+- **Best for**: Large-scale applications requiring strict architecture.  
+- **Complexity**: High, requires more boilerplate but ensures maintainability.  
+- **Performance**: High, optimized for complex state management.  
+
 
 ## Conclusion
 
