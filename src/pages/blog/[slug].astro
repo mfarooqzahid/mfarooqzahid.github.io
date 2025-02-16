@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layout/Layout.astro";
+import BlogLayout from "../../layout/BlogLayout.astro";
 import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
@@ -14,7 +14,11 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
-<Layout title={post.data.title}>
+<BlogLayout 
+  title={post.data.title} 
+  description={post.data.description || "Read this article on my blog"} 
+  image={post.data.image} 
+>
   <article class="min-h-screen flex flex-col">
     <div class="md:max-w-3xl w-screen mx-auto flex-grow py-20 px-6 overflow-auto">
       <!-- Title -->
