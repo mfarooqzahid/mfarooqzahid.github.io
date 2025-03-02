@@ -1,5 +1,5 @@
 ---
-title: "QuizVerse - Community-Driven Quiz Platform"
+title: "Brain Brust - Community-Driven Quiz Platform"
 description: "An interactive platform for learning through quizzes, featuring authentication, leaderboards, and user contributions."
 technologies: ["Flutter", "Firebase", "Provider"]
 image: "https://www.upwork.com/att/download/portfolio/persons/uid/1730187360472432640/profile/projects/files/678bbcaf-67f9-46db-9ce6-94b8a7d96aaf"
