@@ -1,19 +1,26 @@
 ---
-title: "Flexible Poly - Smart Inventory Management System"
+title: "Inventory Flow - Smart Inventory Management System"
 description: "A real-time inventory management system for manufacturers and suppliers."
-technologies: ["Flutter", "Firebase", "Bloc"]
+technologies: ["Flutter", "Supabase", "Bloc"]
 image: "https://www.upwork.com/att/download/portfolio/persons/uid/1730187360472432640/profile/projects/files/679ef6b7-4349-4ed7-9c1f-375796dea2fd"
 
 screenshots:
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557335/Screenshot_2024-12-14-08-01-49-04_e84e11ef96420300ba271d4eea4d2860_ds288i.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557335/Screenshot_2024-12-14-08-01-05-09_e84e11ef96420300ba271d4eea4d2860_fxnyr4.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557334/Screenshot_2024-12-14-08-01-35-98_e84e11ef96420300ba271d4eea4d2860_wnmjoe.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557334/Screenshot_2024-12-14-08-01-56-23_e84e11ef96420300ba271d4eea4d2860_k7lafg.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557331/Screenshot_2024-12-14-08-00-40-49_e84e11ef96420300ba271d4eea4d2860_zvosww.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557329/Screenshot_2024-12-14-07-59-31-20_e84e11ef96420300ba271d4eea4d2860_bopxol.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557331/Screenshot_2024-12-14-08-00-34-30_e84e11ef96420300ba271d4eea4d2860_vuj61t.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557330/Screenshot_2024-12-14-07-59-57-49_e84e11ef96420300ba271d4eea4d2860_e82hih.jpg"
-  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739557329/Screenshot_2024-12-14-07-59-51-72_e84e11ef96420300ba271d4eea4d2860_ywnhyt.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040388/WhatsApp_Image_2025-09-26_at_3.05.13_PM_2_zcvfc9.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040388/WhatsApp_Image_2025-09-26_at_3.05.13_PM_1_ekdf6h.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040388/WhatsApp_Image_2025-09-26_at_3.05.13_PM_pm3goz.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040389/WhatsApp_Image_2025-09-26_at_3.05.14_PM_y9p1dt.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040390/WhatsApp_Image_2025-09-26_at_3.05.15_PM_h4y3k3.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040392/WhatsApp_Image_2025-09-26_at_3.05.17_PM_3_z03tjq.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040389/WhatsApp_Image_2025-09-26_at_3.05.17_PM_2_lj1hi5.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040389/WhatsApp_Image_2025-09-26_at_3.05.17_PM_belhcs.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040391/WhatsApp_Image_2025-09-26_at_3.05.18_PM_wiltbq.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040395/WhatsApp_Image_2025-09-26_at_3.05.20_PM_tuo5j0.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040395/WhatsApp_Image_2025-09-26_at_3.05.21_PM_2_liikls.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040393/WhatsApp_Image_2025-09-26_at_3.05.21_PM_tmvgbt.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040395/WhatsApp_Image_2025-09-26_at_3.05.19_PM_1_lkfayj.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040393/WhatsApp_Image_2025-09-26_at_3.05.19_PM_exjsio.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040396/WhatsApp_Image_2025-09-26_at_3.05.22_PM_hlxtca.jpg"
+  - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1759040394/WhatsApp_Image_2025-09-26_at_3.05.20_PM_1_mwukvo.jpg"
 
 ---
 

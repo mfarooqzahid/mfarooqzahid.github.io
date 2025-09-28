@@ -17,7 +17,7 @@ const project = defineCollection({
     description: z.string(),
     technologies: z.array(z.string()),
     image: z.string(),
-    screenshots: z.array(z.string()).optional(), // Screenshots are optional
+    screenshots: z.array(z.string()).optional(), 
   }),
 });
 
