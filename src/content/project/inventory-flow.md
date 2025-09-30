@@ -55,7 +55,7 @@ screenshots:
 
 ## **Tech Stack**  
 - **Frontend:** Flutter (with Bloc for state management)  
-- **Backend:** Firebase (Firestore for database, Firebase Messaging for notifications)  
+- **Backend:** Firebase (Supabase for database, authentication, Firebase Messaging for notifications)  
 - **Navigation:** go_router  
 - **Other:** Syncfusion for PDF generation & charts  
 
