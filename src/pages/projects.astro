@@ -1,38 +1,35 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layout/Layout.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
 
 const projects = await getCollection("project");
+const devopsProjects = projects.filter((project) => project.data.category === "devops");
+const flutterProjects = projects.filter((project) => project.data.category === "flutter");
 ---
 
 <Layout>
-  <section class="container mx-auto py-10 px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-bold mb-6 text-center md:text-left">Projects</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-center">
-      {projects.map((project) => (
-        <a 
-          href={`/projects/${project.slug}`} 
-          class="block bg-white shadow-lg rounded-lg p-4 transition transform hover:shadow-xl border-1 border-gray-200"
-        >
-          {/* Image with 16:9 aspect ratio */}
-          <div class="aspect-video overflow-hidden rounded-md mb-4">
-            <img 
-              src={project.data.image} 
-              alt={project.data.title} 
-              class="w-full h-full object-cover hover:scale-105 transition transform" 
-            />
-          </div>
-          <h3 class="text-xl font-semibold mb-2">{project.data.title}</h3>
-          <p class="text-gray-600 mb-4">{project.data.description}</p>
-          <div class="flex flex-wrap gap-2">
-            {project.data.technologies.map((tech) => (
-              <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </a>
-      ))}
+  <section class="container mx-auto pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wider text-green-700 mb-2">Projects</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="/projects/flutter" class="px-4 py-2 rounded-full bg-gray-100 text-gray-800 hover:bg-green-100">Flutter</a>
+        <a href="/projects/devops" class="px-4 py-2 rounded-full bg-gray-100 text-gray-800 hover:bg-green-100">DevOps</a>
+      </div>
+    </div>
+
+    <div class="space-y-14">
+      <section>
+        <h2 class="text-2xl font-bold mb-6 text-gray-900">Flutter Projects</h2>
+        <ProjectGrid projects={flutterProjects} variant="flutter" />
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mb-6 text-gray-900">DevOps Projects</h2>
+        <ProjectGrid projects={devopsProjects} variant="devops" />
+      </section>
     </div>
   </section>
 </Layout>

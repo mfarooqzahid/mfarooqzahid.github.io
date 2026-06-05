@@ -1,6 +1,7 @@
 ---
 title: "MX Bill Pay - Seamless & Secure Bill Payment Solution"  
 description: "A reliable mobile payment solution for managing electricity, airtime, data, cable, tolls, and internet bills."  
+category: "flutter"
 technologies: ["Flutter", "REST APIs", "GetX"]  
 image:   "https://www.upwork.com/att/download/portfolio/persons/uid/1730187360472432640/profile/projects/files/ac710137-a773-4db9-9848-c7f4b399547a"
 

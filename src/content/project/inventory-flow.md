@@ -1,6 +1,7 @@
 ---
 title: "Inventory Flow - Smart Inventory Management System"
 description: "A real-time inventory management system for manufacturers and suppliers."
+category: "flutter"
 technologies: ["Flutter", "Supabase", "Bloc"]
 image: "https://www.upwork.com/att/download/portfolio/persons/uid/1730187360472432640/profile/projects/files/679ef6b7-4349-4ed7-9c1f-375796dea2fd"
 
@@ -64,4 +65,3 @@ screenshots:
 Flexible Poly **simplifies inventory management** with **real-time tracking, automated alerts, and seamless ordering**—helping businesses stay on top of their stock efficiently.  
 
 ## **Screenshots & Demo**  
-

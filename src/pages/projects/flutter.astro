@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layout/Layout.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+
+const projects = await getCollection("project");
+const flutterProjects = projects.filter((project) => project.data.category === "flutter");
+---
+
+<Layout title="Flutter Projects">
+  <section class="container mx-auto pt-32 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <h1 class="text-3xl font-bold text-gray-900">Flutter Projects</h1>
+      <a href="/projects/devops" class="px-4 py-2 rounded-full bg-gray-100 text-gray-800 hover:bg-green-100 w-fit">DevOps Projects</a>
+    </div>
+
+    <ProjectGrid projects={flutterProjects} variant="flutter" />
+  </section>
+</Layout>

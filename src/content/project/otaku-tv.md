@@ -1,6 +1,7 @@
 ---
 title: "Otaku TV - Premium Anime Streaming Platform"
 description: "A series-sharing platform where users pay to watch content shared by administrators."
+category: "flutter"
 technologies: ["Flutter", "GetX", "Custom API"]
 image: "https://www.upwork.com/att/download/portfolio/persons/uid/1730187360472432640/profile/projects/files/fa9f467a-e5dc-4d20-9059-8f5184e95f3d"
 

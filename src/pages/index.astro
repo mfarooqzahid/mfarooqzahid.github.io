@@ -4,24 +4,33 @@ import ContactButtons from "../components/ContactButtons.astro"
 ---
 
 <Layout title="Welcome">
-  <section class="flex flex-col items-center justify-center text-center text-black min-h-screen px-6">
+  <section class="relative flex flex-col items-center justify-center text-center text-black min-h-screen px-6 pt-36 pb-24 overflow-hidden">
     <div class="gradients absolute inset-0 overflow-hidden -z-10">
       <div class="gradient"></div>
       <div class="gradient"></div>
       <div class="gradient"></div>
     </div>
 
-    <div class="max-w-2xl w-full">
+    <div class="max-w-4xl w-full">
+      <div class="mx-auto mb-6 h-36 w-36 overflow-hidden rounded-full border-4 border-white/70 shadow-lg sm:h-40 sm:w-40">
+        <img
+          src="/assets/photo.jpg"
+          alt="Farooq Zahid"
+          class="h-full w-full object-cover"
+        />
+      </div>
       <h2 class="text-xl sm:text-2xl font-medium pb-3">Hi, I'm Farooq</h2>
       <h1 class="text-3xl sm:text-5xl font-bold leading-tight">
-        Your Trusted Ally for Flutter App Development
+        I build and deploy software.
       </h1>
 
-      <p class="text-base sm:text-lg mt-2 text-gray-700 pt-3">
-        Welcome to my portfolio. Explore my projects, blog, and more!
+      <p class="text-base sm:text-lg mt-2 text-gray-700 pt-3 max-w-3xl mx-auto">
+        DevOps Engineer & Software Developer focused on reliable, scalable systems.
+        I work with AWS, Docker, Terraform, Jenkins, Kubernetes, and Linux to
+        automate infrastructure and deployments, backed by development experience
+        in Flutter, Go, and backend technologies.
       </p>
 
-      <!-- Buttons -->
       <div class="mt-4">
         <ContactButtons />
       </div>

@@ -1,6 +1,7 @@
 ---
 title: "ENI Solution - Automated Staff Attendance & Event Management System" 
 description: "A smart system for automated staff attendance and event scheduling." 
+category: "flutter"
 technologies: ["Flutter", "Firebase", "Facial Recognition", "QR Code", "Bloc"]  
 image: "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739677692/Purple_Pink_Gradient_Mobile_Application_Presentation_l3drbw.png"
 

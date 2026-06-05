@@ -2,6 +2,10 @@
 import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 const { title } = Astro.props;
+const siteTitle = "Farooq Zahid - DevOps Engineer & Software Developer";
+const pageTitle = title ? `${title} | Farooq Zahid` : siteTitle;
+const description =
+  "Farooq Zahid builds and deploys reliable software systems with AWS, Docker, Terraform, Jenkins, Kubernetes, Linux, Flutter, Go, and backend technologies.";
 ---
 
 <html lang="en">
@@ -10,41 +14,30 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Title and Description -->
-    <title>Farooq Zahid - Flutter Developer</title>
-    <meta
-      name="description"
-      content="I'm a passionate Flutter developer specializing in building high-performance mobile apps and backend systems."
-    />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
 
     <!-- Open Graph Meta Tags (For Facebook, LinkedIn, etc.) -->
-    <meta property="og:title" content="Farooq Zahid - Flutter Developer" />
-    <meta
-      property="og:description"
-      content="Explore my portfolio and see how I bring ideas to life with Flutter, Firebase, and more!"
-    />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={description} />
     <meta
       property="og:image"
-      content="https://farooqzahid.vercel.app/assets/banner.png"
+      content="https://farooqzahid.vercel.app/assets/photo.jpg"
     />
     <meta property="og:url" content="https://farooqzahid.vercel.app" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card Meta Tags (For Twitter Previews) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Farooq Zahid - Flutter Developer" />
-    <meta
-      name="twitter:description"
-      content="Explore my portfolio and see how I bring ideas to life with Flutter, Firebase, and more!"
-    />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content="https://farooqzahid.vercel.app/assets/banner.png"
+      content="https://farooqzahid.vercel.app/assets/photo.jpg"
     />
 
-    <!-- Favicon -->
-    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    <title>{title} | Farooq Zahid</title>
   </head>
   <body>
     <Nav />

@@ -2,10 +2,10 @@
 const pathName = Astro.url.pathname;
 ---
 
-<div class="h-20 bg-green w-full top-2 sticky flex items-center justify-between px-6 z-10">
+<div class="h-20 w-full top-0 fixed flex items-center justify-between px-6 z-30 bg-white/30 backdrop-blur-md">
   <!-- Avatar -->
   <a href="/" class="w-16 h-16 p-1 border-3 border-green-200 rounded-full bg-transparent overflow-hidden">
-    <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg" 
+    <img src="/assets/photo.jpg" 
          alt="Avatar" 
          class="w-full h-full object-cover rounded-full" />
   </a>
@@ -14,7 +14,7 @@ const pathName = Astro.url.pathname;
   <nav class="hidden md:flex justify-center space-x-6 text-lg font-medium bg-green-200 w-fit rounded-full">
     <a href="/about" class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer">About</a>
     <a href="/projects" class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer">Projects</a>
-    <a href="https://mfarooqzahid.medium.com" class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer">Blog</a>
+    <a href="https://mfarooqzahid.medium.com" target="_blank" rel="noreferrer" class="w-32 py-4 px-3 rounded-full transition text-center hover:bg-green-300 cursor-pointer">Blog</a>
   </nav>
 
   <!-- Resume Button (Hidden on Mobile) -->
@@ -33,7 +33,7 @@ const pathName = Astro.url.pathname;
 </div>
 
 <!-- Mobile Menu (Hidden by Default) -->
-<div id="mobile-menu" class="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-lg font-medium transform translate-x-full transition-transform duration-300 z-10">
+<div id="mobile-menu" class="fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6 text-lg font-medium transform translate-x-full transition-transform duration-300 z-40">
   <button id="close-menu" class="absolute top-7 right-7 w-10 h-10 flex items-center justify-center">
     <span class="absolute w-8 h-0.5 bg-black rotate-45"></span>
     <span class="absolute w-8 h-0.5 bg-black -rotate-45"></span>
@@ -41,7 +41,7 @@ const pathName = Astro.url.pathname;
   
   <a href="/about" class="text-xl font-semibold">About</a>
   <a href="/projects" class="text-xl font-semibold">Projects</a>
-  <a href="/blog" class="text-xl font-semibold">Blog</a>
+  <a href="https://mfarooqzahid.medium.com" target="_blank" rel="noreferrer" class="text-xl font-semibold">Blog</a>
   <a href="https://docs.google.com/document/d/18tG6asWRUC3altNbN6OxoKiyiYaCwhPqvVroyYRj8Vk/export?format=pdf"
      download
      class="px-6 py-3 bg-green-200 rounded-full text-lg font-medium">
