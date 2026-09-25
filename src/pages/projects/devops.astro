@@ -8,12 +8,29 @@ const devopsProjects = projects.filter((project) => project.data.category === "d
 ---
 
 <Layout title="DevOps Projects">
-  <section class="container mx-auto pt-32 pb-12 px-4 sm:px-6 lg:px-8">
-    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-      <h1 class="text-3xl font-bold text-gray-900">DevOps Projects</h1>
-      <a href="/projects/flutter" class="px-4 py-2 rounded-full bg-gray-100 text-gray-800 hover:bg-green-100 w-fit">Flutter Projects</a>
-    </div>
+  <section class="mx-auto px-5 pt-12 pb-24">
+    <div class="mx-auto w-full max-w-6xl">
+      <a href="/" class="craft-chip craft-chip--teal mb-6 hover:underline">
+        <span class="emoji">←</span> Home
+      </a>
+      <div class="craft-card relative mb-10 px-6 py-8 sm:px-10">
+        <span class="tape tape--left"></span>
+        <div
+          class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
+        >
+          <h1 class="text-3xl sm:text-4xl">
+            <span class="emoji">⚙️</span> DevOps Projects
+          </h1>
+          <a
+            href="/projects/flutter"
+            class="craft-btn craft-btn--paper !py-2.5 !px-5 text-base w-fit"
+          >
+            <span class="emoji">📱</span> Flutter Projects
+          </a>
+        </div>
+      </div>
 
-    <ProjectGrid projects={devopsProjects} variant="devops" />
+      <ProjectGrid projects={devopsProjects} variant="devops" />
+    </div>
   </section>
 </Layout>

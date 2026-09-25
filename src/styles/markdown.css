@@ -1,0 +1,7 @@
+/*
+  Stylesheet for standalone /pages artifacts.
+  Tailwind Typography only — deliberately separate from the site's global.css
+  so rendered Markdown gets a neutral "prose" look with no craft theme.
+*/
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';

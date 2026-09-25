@@ -1,0 +1,69 @@
+---
+import { getCollection } from "astro:content";
+import fs from "node:fs";
+import path from "node:path";
+import Layout from "../../layout/Layout.astro";
+
+const markdownPages = (await getCollection("custom")).map((page) => ({
+  href: `/pages/${page.slug}`,
+  title: page.data.title,
+  description: page.data.description,
+}));
+
+// Standalone .html files dropped straight into src/pages/pages/
+// are served by Astro at /pages/<name>.
+const pagesDir = path.join(process.cwd(), "src", "pages", "pages");
+const htmlPages = (fs.existsSync(pagesDir) ? fs.readdirSync(pagesDir) : [])
+  .filter((file) => file.endsWith(".html"))
+  .map((file) => {
+    const slug = file.replace(/\.html$/, "");
+    const raw = fs.readFileSync(path.join(pagesDir, file), "utf-8");
+    const title = raw.match(/<title>([^<]*)<\/title>/i)?.[1]?.trim() || slug;
+    return {
+      href: `/pages/${slug}`,
+      title,
+      description: "Standalone HTML page.",
+    };
+  });
+
+const pages = [...markdownPages, ...htmlPages].sort((a, b) =>
+  a.title.localeCompare(b.title)
+);
+---
+
+<Layout title="Pages" noindex>
+  <main
+    class="mx-auto w-full max-w-3xl px-6 pt-10 pb-24 font-mono text-sm text-craft-body"
+  >
+    <h1 class="font-mono text-lg font-bold text-craft-ink">/pages</h1>
+    <p class="mt-2 text-craft-muted">
+      Standalone pages that live outside the main site. Not linked from
+      anywhere — reachable by URL only.
+    </p>
+
+    <hr class="my-7 border-t-2 border-dashed border-craft-tan" />
+
+    {
+      pages.length === 0 ? (
+        <p class="text-craft-muted">No custom pages yet.</p>
+      ) : (
+        <ul class="space-y-6">
+          {pages.map((page) => (
+            <li>
+              <a
+                href={page.href}
+                class="font-bold text-craft-accent underline decoration-dashed underline-offset-4 hover:no-underline"
+              >
+                {page.href}
+              </a>
+              <p class="mt-1">
+                <span class="text-craft-ink">{page.title}</span>
+                <span class="text-craft-muted"> — {page.description}</span>
+              </p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</Layout>

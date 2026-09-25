@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Emoji Mashup — Level Map (Craft Storybook)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:radial-gradient(1200px 700px at 50% -10%,#2a2544,#151122 60%,#0d0a16);
+    color:#efeaff;font-family:'Patrick Hand',system-ui,sans-serif;
+    display:flex;flex-direction:column;align-items:center;min-height:100vh;
+  }
+  .concept-nav{
+    position:sticky;top:0;z-index:20;width:100%;display:flex;gap:8px;justify-content:center;
+    flex-wrap:wrap;padding:16px 18px 14px;backdrop-filter:blur(14px);
+    background:linear-gradient(#151122ee,#15112299);border-bottom:1px solid #ffffff14;
+  }
+  .concept-nav button{
+    font:600 13px/1 'Patrick Hand',sans-serif;color:#cfc6ec;background:#ffffff0d;
+    border:1px solid #ffffff1a;border-radius:999px;padding:10px 14px;cursor:pointer;transition:.18s;
+    display:flex;align-items:center;gap:8px;
+  }
+  .concept-nav button:hover{background:#ffffff1a;color:#fff}
+  .concept-nav button.active{background:#fff;color:#1a1430;border-color:#fff;box-shadow:0 8px 24px #0008}
+  .stage-wrap{display:flex;justify-content:center;width:100%;padding:34px 20px 60px}
+  .stage{display:none;flex-direction:column;align-items:center;gap:18px}
+  .stage.active{display:flex;animation:pop .45s cubic-bezier(.2,.9,.3,1.4)}
+  @keyframes pop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+  .caption{max-width:450px;text-align:center}
+  .caption h1{font:800 20px/1.2 'Baloo 2';margin:0 0 6px}
+  .caption p{margin:0;color:#a99fc9;font-size:13.5px;line-height:1.55}
+  .caption p b{color:#fff}
+  .swatches{display:flex;gap:8px;justify-content:center;margin-top:12px}
+  .swatches i{width:22px;height:22px;border-radius:8px;box-shadow:inset 0 0 0 2px #ffffff33}
+
+  /* ============ phone ============ */
+  .phone{
+    position:relative;width:390px;height:844px;flex:0 0 auto;background:#05040a;
+    border-radius:52px;padding:11px;box-shadow:0 40px 90px #000a,0 0 0 2px #ffffff1f,inset 0 0 0 2px #000;
+  }
+  .screen{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;
+    display:flex;flex-direction:column;isolation:isolate}
+  .island{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:112px;height:30px;
+    border-radius:20px;background:#05040a;z-index:30}
+  .emoji{font-family:'Noto Color Emoji','Apple Color Emoji','Segoe UI Emoji',sans-serif;line-height:1;display:inline-block}
+
+  /* ============ storybook skin ============ */
+  .storybook{
+    background:
+      radial-gradient(#0000000a 1.1px,transparent 1.2px) 0 0/6px 6px,
+      linear-gradient(180deg,#fdf4e2,#f2e2c4);
+    color:#3a2e22;font-family:'Patrick Hand';
+  }
+  .sb{position:relative;z-index:25;flex:0 0 auto;height:50px;display:flex;align-items:flex-end;
+    justify-content:space-between;padding:0 26px 6px;font:800 13px/1 'Baloo 2',sans-serif;color:#5b4a35}
+  .sb-r{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.4px}
+  .bat{width:22px;height:11px;border-radius:3px;border:1.5px solid currentColor;padding:1.5px;display:block}
+  .bat i{display:block;height:100%;width:72%;border-radius:1px;background:currentColor}
+
+  .p-top{flex:0 0 auto;display:flex;align-items:center;gap:10px;padding:2px 16px 10px;position:relative;z-index:6}
+  .p-title{flex:1;text-align:center;font:400 21px 'Chewy';color:#3a2e22;display:flex;align-items:center;justify-content:center;gap:8px}
+  .p-icon{width:42px;height:42px;border:0;border-radius:14px;font-size:18px;cursor:pointer;flex:0 0 auto;
+    display:grid;place-items:center;background:#fffaf0;border:2px solid #e2d0b0;box-shadow:0 4px 0 #e2d0b0;color:#2fa79b}
+
+  /* ===== progress strip ===== */
+  .strip{flex:0 0 auto;position:relative;z-index:6;padding:0 16px 10px}
+  .strip-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .world-pill{
+    background:#2fa79b;color:#fff;border-radius:12px;padding:6px 12px;font:400 15px 'Chewy';
+    box-shadow:0 4px 0 #1f7d74;display:flex;gap:7px;align-items:center;
+  }
+  .world-stars{
+    margin-left:auto;background:#fffaf0;border-radius:12px;padding:6px 11px;font:400 15px 'Chewy';color:#b98a1f;
+    box-shadow:0 4px 0 #e2d0b0;display:flex;gap:6px;align-items:center;
+  }
+  .track{height:13px;border-radius:999px;background:#eadfc9;box-shadow:inset 0 2px 3px #0000001f;overflow:hidden}
+  .track i{display:block;height:100%;border-radius:999px;
+    background:repeating-linear-gradient(45deg,#2fa79b 0 7px,#38b7aa 7px 14px)}
+
+  /* ===== the map ===== */
+  .map{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;z-index:1}
+  .trail{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:visible}
+  .trail path{fill:none;stroke-linecap:round}
+  .trail .road{stroke:#e4d3ad;stroke-width:15}
+  .trail .road-shadow{stroke:#00000012;stroke-width:15;transform:translate(0,3px)}
+  .trail .done{stroke:#82cabc;stroke-width:15}
+  .trail .stitch{stroke:#fffaf0;stroke-width:3;stroke-dasharray:1 9}
+
+  /* scenery */
+  .mhill{position:absolute;left:-8%;bottom:-46px;width:116%;height:130px;border-radius:50% 50% 0 0;background:#d5ebdd;z-index:0}
+  .mhill.two{background:#b9dcc8;height:96px;left:-26%;width:92%;bottom:-34px}
+  .mhill.three{background:#a9d3bd;height:70px;left:34%;width:90%;bottom:-30px}
+  .sun{position:absolute;left:8px;top:8px;width:44px;height:44px;border-radius:50%;background:#e9b23c;
+    box-shadow:0 0 0 5px #f7e3ae,0 0 0 7px #e9b23c55;z-index:0}
+  .sun::after{content:"";position:absolute;inset:9px;border-radius:50%;border:2px dashed #fff8e6}
+  .fcloud{position:absolute;width:56px;height:22px;background:#fffdf8;border-radius:999px;z-index:0;
+    box-shadow:0 6px 12px #a98a5a14}
+  .fcloud::before{content:"";position:absolute;left:8px;top:-13px;width:27px;height:27px;background:#fffdf8;border-radius:50%}
+  .fcloud::after{content:"";position:absolute;left:27px;top:-9px;width:21px;height:21px;background:#fffdf8;border-radius:50%}
+  .tree{position:absolute;width:44px;height:54px;z-index:2}
+  .tree::before{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:9px;height:17px;background:#c9a06a;border-radius:3px}
+  .tree::after{content:"";position:absolute;left:0;top:0;width:44px;height:40px;background:#7fbf9b;border-radius:50% 50% 46% 46%;
+    box-shadow:inset 0 -5px 0 #00000014,0 6px 10px #a98a5a26}
+  .tree.small{transform:scale(.78);transform-origin:bottom left}
+  .compass{position:absolute;right:14px;top:10px;width:50px;height:50px;border-radius:50%;background:#fffaf0;z-index:2;
+    display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 2px #e2d0b0,0 5px 10px #a98a5a26}
+
+  /* level nodes */
+  .node{position:absolute;transform:translate(-50%,-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:4px;width:84px}
+  .node .face{
+    position:relative;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;font-size:30px;
+    background:#fffaf0;box-shadow:0 0 0 3px #e2d0b0,0 7px 13px #a98a5a33,inset 0 -4px 0 #efe3d4;
+  }
+  .node .face::after{content:"";position:absolute;inset:5px;border-radius:50%;border:2px dashed #0000001c}
+  .node .stars{font:400 13px 'Patrick Hand';color:#e9b23c;letter-spacing:1.5px;text-shadow:0 1px 0 #fff}
+  .node .stars .off{color:#cdc0a8;text-shadow:none}
+  .node.done .face{box-shadow:0 0 0 3px #2fa79b,0 7px 13px #2fa79b33,inset 0 -4px 0 #efe3d4}
+  .node.done .face::before{content:"✓";position:absolute;top:-6px;right:-6px;width:21px;height:21px;border-radius:50%;
+    background:#2fa79b;color:#fff;font-size:12px;display:grid;place-items:center;box-shadow:0 2px 0 #1f7d74;z-index:2}
+  .node.locked .face{background:#efe7d6;box-shadow:0 0 0 3px #d8c9ad,0 6px 12px #a98a5a26;font-size:24px;color:#a3907a}
+  .node.locked .face::after{border-color:#00000012}
+  .node.locked .stars{color:#cdc0a8}
+  .node.current{width:104px;z-index:7}
+  .node.current .face{width:80px;height:80px;font-size:42px;box-shadow:0 0 0 4px #e8735a,0 9px 18px #e8735a40,inset 0 -5px 0 #efe3d4}
+  .node.current .face::after{inset:7px;border-color:#e8735a44}
+  .node.current .halo{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;
+    box-shadow:0 0 0 0 #e8735a66;animation:ring 1.9s ease-out infinite;pointer-events:none}
+  @keyframes ring{0%{box-shadow:0 0 0 0 #e8735a59}100%{box-shadow:0 0 0 22px #e8735a00}}
+  .node.current .face{animation:bob 2.6s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  .node.current .pointer{position:absolute;top:-34px;left:50%;transform:translateX(-50%);font-size:24px;animation:ping 1.1s ease-in-out infinite;z-index:3}
+  @keyframes ping{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+  .node.current .playtag{background:#e8735a;color:#fff;font:400 14px 'Chewy';padding:2px 12px;border-radius:999px;
+    box-shadow:0 3px 0 #b9523d;letter-spacing:.5px}
+  .node .lvt{font:400 12px 'Patrick Hand';color:#8a7561;background:#fffaf0cc;border-radius:999px;padding:1px 8px}
+
+  /* ===== action bar ===== */
+  .acts{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px 26px;position:relative;z-index:6}
+  .mapbtn{width:64px;height:64px;border-radius:16px;background:#fffaf0;color:#2fa79b;font-size:24px;cursor:pointer;
+    box-shadow:0 5px 0 #e2d0b0;border:0;display:grid;place-items:center}
+  .play{
+    flex:1;height:72px;border:0;border-radius:16px;color:#fff;font:400 27px 'Chewy';letter-spacing:.5px;cursor:pointer;
+    background:#e8735a;box-shadow:0 6px 0 #b9523d,0 12px 22px #e8735a4d;outline:3px dashed #fff8ea;outline-offset:-9px;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+  }
+
+  /* ===== episode list ===== */
+  .summary{
+    flex:0 0 auto;margin:0 16px 12px;position:relative;z-index:6;background:#2fa79b;color:#fff;border-radius:10px;
+    padding:12px 14px;box-shadow:0 6px 14px #2fa79b40;transform:rotate(-.8deg);
+  }
+  .summary::before{content:"";position:absolute;top:-9px;left:22px;width:46px;height:16px;background:#e9cf8fb0;
+    transform:rotate(-5deg);border-left:1px dashed #c9a95a;border-right:1px dashed #c9a95a}
+  .summary b{font:400 18px 'Chewy';letter-spacing:.3px}
+  .summary .bar{height:11px;border-radius:999px;background:#ffffff40;margin-top:8px;overflow:hidden}
+  .summary .bar i{display:block;height:100%;background:#fff;border-radius:999px}
+  .ep-list{flex:1 1 auto;min-height:0;overflow-y:auto;padding:4px 16px 14px;position:relative;z-index:5;
+    display:flex;flex-direction:column;gap:12px;
+    -webkit-mask:linear-gradient(#000 0 88%,transparent 100%);mask:linear-gradient(#000 0 88%,transparent 100%)}
+  .ep-list::-webkit-scrollbar{width:0}
+  .chapter{font:400 17px 'Chewy';color:#b9523d;display:flex;align-items:center;gap:9px;margin:6px 0 0}
+  .chapter::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,#e2d0b0 0 6px,transparent 6px 13px)}
+  .ep{position:relative;display:flex;align-items:center;gap:12px;background:#fffdf7;border-radius:10px;padding:12px;
+    box-shadow:0 6px 14px #a98a5a26,inset 0 0 0 2px #fff;transform:rotate(-.6deg)}
+  .ep:nth-of-type(even){transform:rotate(.6deg)}
+  .ep::before{content:"";position:absolute;top:-8px;left:24px;width:44px;height:16px;background:#e9cf8fb0;
+    transform:rotate(-5deg);border-left:1px dashed #c9a95a;border-right:1px dashed #c9a95a}
+  .ep-icon{width:60px;height:60px;border-radius:50%;background:#fff8ea;border:2.5px dashed #d9c39b;flex:0 0 auto;
+    display:grid;place-items:center;font-size:30px}
+  .ep-info{flex:1;min-width:0}
+  .ep-info h3{margin:0 0 2px;font:400 20px 'Chewy';color:#2c3a4b}
+  .ep-meta{font:400 13px 'Patrick Hand';color:#a08a76;margin-bottom:6px}
+  .ep-bar{height:10px;border-radius:999px;background:#eadfc9;overflow:hidden}
+  .ep-bar i{display:block;height:100%;background:#2fa79b;border-radius:999px}
+  .ep-side{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:5px;min-width:44px}
+  .ep-side .stars{font-size:14px;color:#e9b23c;letter-spacing:1px}
+  .ep-side .go{font:400 24px 'Chewy';color:#c9b6a0;line-height:1}
+  .ep.current{box-shadow:0 8px 18px #e8735a33,0 0 0 3px #e8735a}
+  .ep.current .ep-bar i{background:#e8735a}
+  .ep-tag{position:absolute;top:-10px;right:14px;background:#e8735a;color:#fff;font:400 13px 'Chewy';
+    padding:2px 10px;border-radius:999px;box-shadow:0 3px 0 #b9523d;letter-spacing:.5px}
+  .ep.locked{opacity:.62;filter:grayscale(.35)}
+  .ep.locked .ep-icon{border-style:solid;border-color:#e0d2b8;background:#f3ecdd}
+  .ep.locked .go{color:#cdc0a8}
+</style>
+</head>
+<body>
+
+<nav class="concept-nav" id="nav">
+  <button data-go="m1" class="active"><span class="emoji">🗺️</span>Level Map</button>
+  <button data-go="m2"><span class="emoji">🌍</span>Episode Select</button>
+</nav>
+
+<main class="stage-wrap">
+
+  <!-- ================= LEVEL MAP ================= -->
+  <section class="stage active" data-stage="m1">
+    <div class="phone">
+      <div class="island"></div>
+      <div class="screen storybook">
+        <div class="sb"><b>9:41</b><span class="sb-r">5G<i class="bat"><i></i></i></span></div>
+
+        <header class="p-top">
+          <button class="p-icon">←</button>
+          <div class="p-title"><span class="emoji">🌍</span>Nature</div>
+          <button class="p-icon"><span class="emoji">⚙️</span></button>
+        </header>
+
+        <div class="strip">
+          <div class="strip-row">
+            <div class="world-pill"><span class="emoji">🔍</span>World 1 · Discover</div>
+            <div class="world-stars"><span class="emoji">⭐</span>14 / 21</div>
+          </div>
+          <div class="track"><i style="width:66%"></i></div>
+        </div>
+
+        <section class="map">
+          <div class="sun"></div>
+          <div class="mhill"></div><div class="mhill two"></div><div class="mhill three"></div>
+          <div class="fcloud" style="left:210px;top:44px"></div>
+          <div class="fcloud" style="left:44px;top:210px;transform:scale(.8)"></div>
+          <div class="tree" style="left:298px;top:196px"></div>
+          <div class="tree small" style="left:36px;top:404px"></div>
+          <div class="compass"><span class="emoji">🧭</span></div>
+
+          <svg class="trail" viewBox="0 0 368 556" preserveAspectRatio="none" aria-hidden="true">
+            <path class="road-shadow" d="M96 60 C170 30 250 90 250 130 C250 170 110 165 110 205 C110 245 258 240 258 280 C258 320 118 315 118 355 C118 395 252 390 252 430 C252 470 130 465 130 505"/>
+            <path class="road"        d="M96 60 C170 30 250 90 250 130 C250 170 110 165 110 205 C110 245 258 240 258 280 C258 320 118 315 118 355 C118 395 252 390 252 430 C252 470 130 465 130 505"/>
+            <path class="done"        d="M96 60 C170 30 250 90 250 130 C250 170 110 165 110 205 C110 245 258 240 258 280 C258 320 118 315 118 355 C118 395 252 390 252 430"/>
+            <path class="stitch"      d="M96 60 C170 30 250 90 250 130 C250 170 110 165 110 205 C110 245 258 240 258 280 C258 320 118 315 118 355 C118 395 252 390 252 430 C252 470 130 465 130 505"/>
+          </svg>
+
+          <div class="node done" style="left:26.1%;top:10.8%">
+            <span class="lvt">Lv 1</span>
+            <span class="face"><span class="emoji">☁️</span></span>
+            <span class="stars">★★★</span>
+          </div>
+
+          <div class="node done" style="left:67.9%;top:23.4%">
+            <span class="lvt">Lv 2</span>
+            <span class="face"><span class="emoji">⭐</span></span>
+            <span class="stars">★★★</span>
+          </div>
+
+          <div class="node done" style="left:29.9%;top:36.9%">
+            <span class="lvt">Lv 3</span>
+            <span class="face"><span class="emoji">🌊</span></span>
+            <span class="stars">★★<span class="off">★</span></span>
+          </div>
+
+          <div class="node done" style="left:70.1%;top:50.4%">
+            <span class="lvt">Lv 4</span>
+            <span class="face"><span class="emoji">⛄</span></span>
+            <span class="stars">★★★</span>
+          </div>
+
+          <div class="node done" style="left:32.1%;top:63.8%">
+            <span class="lvt">Lv 5</span>
+            <span class="face"><span class="emoji">⛰️</span></span>
+            <span class="stars">★★<span class="off">★</span></span>
+          </div>
+
+          <div class="node current" style="left:68.5%;top:77.3%">
+            <span class="pointer emoji">👇</span>
+            <span class="halo"></span>
+            <span class="face"><span class="emoji">🌙</span></span>
+            <span class="playtag">PLAY · Lv 6</span>
+          </div>
+
+          <div class="node locked" style="left:35.3%;top:90.8%">
+            <span class="face"><span class="emoji">🔒</span></span>
+            <span class="lvt">Lv 7</span>
+          </div>
+        </section>
+
+        <footer class="acts">
+          <button class="mapbtn"><span class="emoji">🗺️</span></button>
+          <button class="play"><span class="emoji">▶️</span>Play “Moon”</button>
+        </footer>
+      </div>
+    </div>
+    <div class="caption">
+      <h1>Craft Storybook · Level Map</h1>
+      <p>A paper trail you actually want to follow: <b>stitched path</b>, felt level badges, gold stars and a pulsing
+      "you are here". Completed stops turn teal, the road behind you fills in, and the path ahead stays a mystery. Same
+      <b>Nature</b> levels as your current list, now with a sense of journey.</p>
+      <div class="swatches">
+        <i style="background:#e8735a"></i><i style="background:#e9b23c"></i><i style="background:#2fa79b"></i>
+        <i style="background:#7fbf9b"></i><i style="background:#2c3a4b"></i><i style="background:#fdf4e2"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EPISODE SELECT ================= -->
+  <section class="stage" data-stage="m2">
+    <div class="phone">
+      <div class="island"></div>
+      <div class="screen storybook">
+        <div class="sb"><b>9:41</b><span class="sb-r">5G<i class="bat"><i></i></i></span></div>
+
+        <header class="p-top">
+          <button class="p-icon">←</button>
+          <div class="p-title">Choose an Adventure</div>
+          <button class="p-icon"><span class="emoji">⚙️</span></button>
+        </header>
+
+        <div class="summary">
+          <b><span class="emoji">✨</span> 21 of 121 creations discovered</b>
+          <div class="bar"><i style="width:17%"></i></div>
+        </div>
+
+        <div class="ep-list">
+          <div class="chapter">Starter Episodes</div>
+          <div class="ep">
+            <span class="ep-icon"><span class="emoji">🌟</span></span>
+            <div class="ep-info">
+              <h3>Starter</h3>
+              <div class="ep-meta">8 / 8 levels · finished</div>
+              <div class="ep-bar"><i style="width:100%"></i></div>
+            </div>
+            <div class="ep-side"><span class="stars">★★★</span><span class="go">›</span></div>
+          </div>
+
+          <div class="chapter">Explorer Episodes</div>
+          <div class="ep">
+            <span class="ep-icon"><span class="emoji">🌱</span></span>
+            <div class="ep-info">
+              <h3>Plants</h3>
+              <div class="ep-meta">2 / 18 levels</div>
+              <div class="ep-bar"><i style="width:11%"></i></div>
+            </div>
+            <div class="ep-side"><span class="stars">★<span style="color:#cdc0a8">★★</span></span><span class="go">›</span></div>
+          </div>
+
+          <div class="ep current">
+            <span class="ep-tag">YOU ARE HERE</span>
+            <span class="ep-icon"><span class="emoji">🌍</span></span>
+            <div class="ep-info">
+              <h3>Nature</h3>
+              <div class="ep-meta">7 / 20 levels</div>
+              <div class="ep-bar"><i style="width:35%"></i></div>
+            </div>
+            <div class="ep-side"><span class="stars">★★<span style="color:#cdc0a8">★</span></span><span class="go">›</span></div>
+          </div>
+
+          <div class="ep">
+            <span class="ep-icon"><span class="emoji">🍳</span></span>
+            <div class="ep-info">
+              <h3>Food</h3>
+              <div class="ep-meta">0 / 20 levels</div>
+              <div class="ep-bar"><i style="width:0%"></i></div>
+            </div>
+            <div class="ep-side"><span class="stars" style="color:#cdc0a8">★★★</span><span class="go">›</span></div>
+          </div>
+
+          <div class="ep">
+            <span class="ep-icon"><span class="emoji">🚗</span></span>
+            <div class="ep-info">
+              <h3>Objects</h3>
+              <div class="ep-meta">0 / 17 levels</div>
+              <div class="ep-bar"><i style="width:0%"></i></div>
+            </div>
+            <div class="ep-side"><span class="stars" style="color:#cdc0a8">★★★</span><span class="go">›</span></div>
+          </div>
+
+          <div class="chapter">Adventurer Episodes</div>
+          <div class="ep">
+            <span class="ep-icon"><span class="emoji">🐶</span></span>
+            <div class="ep-info">
+              <h3>Animals</h3>
+              <div class="ep-meta">1 / 21 levels</div>
+              <div class="ep-bar"><i style="width:5%"></i></div>
+            </div>
+            <div class="ep-side"><span class="stars" style="color:#cdc0a8">★★★</span><span class="go">›</span></div>
+          </div>
+
+          <div class="ep locked">
+            <span class="ep-icon"><span class="emoji">🚀</span></span>
+            <div class="ep-info">
+              <h3>Space</h3>
+              <div class="ep-meta">Finish 40 levels to unlock</div>
+              <div class="ep-bar"><i style="width:0%"></i></div>
+            </div>
+            <div class="ep-side"><span class="emoji" style="font-size:22px">🔒</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">
+      <h1>Craft Storybook · Episode Select</h1>
+      <p>The screen before the map, in the same handmade language: <b>washi-taped paper cards</b>, stitched felt icons,
+      a scrapbook progress bar and a "YOU ARE HERE" tag on the current chapter. Locked chapters literally look locked
+      instead of just grey.</p>
+      <div class="swatches">
+        <i style="background:#e8735a"></i><i style="background:#e9b23c"></i><i style="background:#2fa79b"></i>
+        <i style="background:#7fbf9b"></i><i style="background:#2c3a4b"></i><i style="background:#fdf4e2"></i>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const nav = document.getElementById('nav');
+  const stages = [...document.querySelectorAll('.stage')];
+  function show(go, scroll){
+    nav.querySelectorAll('button').forEach(b => b.classList.toggle('active', b.dataset.go === go));
+    stages.forEach(s => s.classList.toggle('active', s.dataset.stage === go));
+    if (scroll) window.scrollTo({ top:0, behavior:'smooth' });
+  }
+  nav.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-go]');
+    if (!btn) return;
+    show(btn.dataset.go, true);
+    history.replaceState(null, '', '#' + btn.dataset.go);
+  });
+  const h = (location.hash.match(/^#(m[12])$/) || [])[1];
+  if (h) show(h, false);
+</script>
+</body>
+</html>

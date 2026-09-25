@@ -1,0 +1,35 @@
+---
+// Neutral, standalone document. Intentionally does NOT import the site's
+// global.css or craft theme — pages under /pages are artifacts, not part of
+// the portfolio. Markdown is rendered with the Tailwind Typography plugin
+// (neutral palette), not the craft styles.
+import "../styles/markdown.css";
+
+const { title = "Pages", noindex = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <style>
+      html {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mx-auto w-full max-w-3xl px-5 py-12">
+      <div class="prose prose-neutral max-w-none">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>

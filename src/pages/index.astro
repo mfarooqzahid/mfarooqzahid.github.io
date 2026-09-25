@@ -1,38 +1,142 @@
 ---
 import Layout from "../layout/Layout.astro";
-import ContactButtons from "../components/ContactButtons.astro"
+import ContactButtons from "../components/ContactButtons.astro";
+
+const devopsStack = ["AWS", "Docker", "Terraform", "Jenkins", "Kubernetes", "Linux", "Nginx"];
+const devStack = ["Flutter", "Go", "PostgreSQL", "Supabase", "Firebase"];
 ---
 
 <Layout title="Welcome">
-  <section class="relative flex flex-col items-center justify-center text-center text-black min-h-screen px-6 pt-36 pb-24 overflow-hidden">
-    <div class="gradients absolute inset-0 overflow-hidden -z-10">
-      <div class="gradient"></div>
-      <div class="gradient"></div>
-      <div class="gradient"></div>
-    </div>
+  <!-- ============ HERO ============ -->
+  <section class="px-5 pt-14 pb-16 sm:pt-20">
+    <div class="mx-auto w-full max-w-5xl">
+      <div class="craft-card relative px-6 py-10 text-center sm:px-12 sm:py-14">
+        <span class="tape"></span>
 
-    <div class="max-w-4xl w-full">
-      <div class="mx-auto mb-6 h-36 w-36 overflow-hidden rounded-full border-4 border-white/70 shadow-lg sm:h-40 sm:w-40">
-        <img
-          src="/assets/photo.jpg"
-          alt="Farooq Zahid"
-          class="h-full w-full object-cover"
-        />
+        <div
+          class="felt-badge felt-badge--accent mx-auto mb-6 h-32 w-32 overflow-hidden sm:h-36 sm:w-36"
+        >
+          <img
+            src="/assets/photo.jpg"
+            alt="Farooq Zahid"
+            class="h-[84%] w-[84%] rounded-full object-cover"
+          />
+        </div>
+
+        <p class="craft-eyebrow">Hi, I'm Farooq</p>
+        <h1 class="mt-3 text-4xl leading-tight sm:text-6xl">
+          I build &amp; deploy software.
+        </h1>
+
+        <p class="mx-auto mt-5 max-w-2xl text-lg text-craft-body sm:text-xl">
+          DevOps Engineer &amp; Software Developer focused on reliable, scalable
+          systems. I work with AWS, Docker, Terraform, Jenkins, Kubernetes, and
+          Linux to automate infrastructure and deployments — backed by
+          development experience in Flutter, Go, and backend technologies.
+        </p>
+
+        <div class="mt-9 flex flex-wrap justify-center gap-4">
+          <a href="/projects" class="craft-btn !py-4 !px-8 text-lg sm:text-xl">
+            <span class="emoji">🧩</span>
+            See my Projects
+          </a>
+          <a
+            href="#about"
+            class="craft-btn craft-btn--paper !py-4 !px-8 text-lg sm:text-xl"
+          >
+            <span class="emoji">📖</span>
+            About me
+          </a>
+        </div>
       </div>
-      <h2 class="text-xl sm:text-2xl font-medium pb-3">Hi, I'm Farooq</h2>
-      <h1 class="text-3xl sm:text-5xl font-bold leading-tight">
-        I build and deploy software.
-      </h1>
+    </div>
+  </section>
 
-      <p class="text-base sm:text-lg mt-2 text-gray-700 pt-3 max-w-3xl mx-auto">
-        DevOps Engineer & Software Developer focused on reliable, scalable systems.
-        I work with AWS, Docker, Terraform, Jenkins, Kubernetes, and Linux to
-        automate infrastructure and deployments, backed by development experience
-        in Flutter, Go, and backend technologies.
-      </p>
+  <!-- ============ ABOUT (merged) ============ -->
+  <section id="about" class="px-5 pb-16 scroll-mt-24">
+    <div class="mx-auto w-full max-w-5xl">
+      <div class="mb-10 text-center">
+        <p class="craft-eyebrow">About Me</p>
+        <h2 class="mx-auto mt-3 max-w-3xl text-3xl leading-snug sm:text-4xl">
+          I build software that is meant to run, scale, and stay maintainable.
+        </h2>
+      </div>
 
-      <div class="mt-4">
-        <ContactButtons />
+      <!-- intro -->
+      <div class="craft-card relative px-6 py-8 sm:px-9">
+        <span class="tape tape--left"></span>
+        <p class="text-lg leading-relaxed text-craft-body">
+          I'm <strong class="text-craft-ink">Farooq Zahid</strong>, a
+          <strong class="text-craft-ink">DevOps Engineer</strong> and
+          <strong class="text-craft-ink">Software Developer</strong> focused on
+          turning ideas into reliable systems. I like working close to the full
+          lifecycle of a product: writing application code, shaping the backend,
+          automating the infrastructure, and making deployments repeatable.
+        </p>
+      </div>
+
+      <!-- two craft cards -->
+      <div class="mt-8 grid gap-8 sm:grid-cols-2">
+        <div class="craft-card relative px-6 py-7">
+          <span class="tape tape--right"></span>
+          <div class="felt-badge felt-badge--teal mb-4 h-14 w-14 text-2xl">
+            <span class="emoji">⚙️</span>
+          </div>
+          <h3 class="text-2xl">DevOps &amp; Infrastructure</h3>
+          <p class="mt-2 leading-relaxed text-craft-body">
+            My DevOps work centres on practical automation: infrastructure that
+            can be recreated, pipelines that reduce manual work, and systems
+            that are easier to observe when something changes.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {devopsStack.map((tech) => (
+              <span class="craft-chip craft-chip--teal">{tech}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="craft-card relative px-6 py-7">
+          <span class="tape tape--left"></span>
+          <div class="felt-badge felt-badge--accent mb-4 h-14 w-14 text-2xl">
+            <span class="emoji">📱</span>
+          </div>
+          <h3 class="text-2xl">Software &amp; Apps</h3>
+          <p class="mt-2 leading-relaxed text-craft-body">
+            On the development side I connect product needs with implementation
+            details — whether the work is a mobile app, a backend service, a
+            deployment pipeline, or a production workflow.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {devStack.map((tech) => (
+              <span class="craft-chip craft-chip--accent">{tech}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- closing -->
+      <div class="craft-card relative mt-8 px-6 py-7 sm:px-9">
+        <span class="tape"></span>
+        <p class="text-lg leading-relaxed text-craft-body">
+          I enjoy solving infrastructure and deployment challenges just as much
+          as writing application code. Most of my free time goes into learning,
+          building, or experimenting with something new. If I'm not working on a
+          project, I'm probably planning the next one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="px-5 pb-24">
+    <div class="mx-auto w-full max-w-4xl">
+      <div class="craft-card relative px-6 py-10 text-center sm:px-10">
+        <span class="tape tape--right"></span>
+        <p class="craft-eyebrow">Say hello</p>
+        <h2 class="mt-3 text-3xl sm:text-4xl">Let's Connect!</h2>
+        <div class="mt-6">
+          <ContactButtons />
+        </div>
       </div>
     </div>
   </section>

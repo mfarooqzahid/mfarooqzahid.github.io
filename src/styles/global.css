@@ -1,81 +1,244 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Baloo+2:wght@400;500;600;700;800&family=Noto+Color+Emoji&display=swap');
 
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
-body {
-    font-family: 'Poppins', sans-serif;  
+/* ---------------------------------------------------------------
+   Craft Storybook design tokens
+--------------------------------------------------------------- */
+@theme {
+  --color-craft-cream: #fdf4e2;
+  --color-craft-cream-2: #f2e2c4;
+  --color-craft-paper: #fffdf7;
+  --color-craft-paper-2: #fffaf0;
+  --color-craft-ink: #2c3a4b;
+  --color-craft-body: #3a2e22;
+  --color-craft-muted: #8a7561;
+  --color-craft-tan: #bcd2e3;
+  --color-craft-tan-2: #9dc0d8;
+  --color-craft-line: #dbe8f2;
+  --color-craft-accent: #5aa9e6;
+  --color-craft-accent-dark: #2f7fb0;
+  --color-craft-teal: #2fa79b;
+  --color-craft-teal-dark: #1f7d74;
+  --color-craft-gold: #e9b23c;
+  --color-craft-felt: #7fbf9b;
+  --color-craft-hill: #b9dcc8;
+
+  --font-display: "Chewy", system-ui, cursive;
+  --font-hand: "Patrick Hand", system-ui, sans-serif;
+  --font-label: "Baloo 2", system-ui, sans-serif;
 }
 
-::-webkit-scrollbar {
+@layer base {
+  html {
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    font-size: 18px;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: "Patrick Hand", system-ui, sans-serif;
+    color: #3a2e22;
+    background:
+      radial-gradient(#2f7fb014 1.1px, transparent 1.2px) 0 0 / 6px 6px,
+      linear-gradient(180deg, #eef7fe, #d8eaf9);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Chewy", system-ui, cursive;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    color: #2c3a4b;
+  }
+
+  ::-webkit-scrollbar {
     display: none;
   }
 
-  html {
-    scrollbar-width: none;
+  ::selection {
+    background-color: #5aa9e655;
+    color: #2c3a4b;
+  }
+}
+
+@layer components {
+  /* --- paper card -------------------------------------------------- */
+  .craft-card {
+    position: relative;
+    background: #fffdf7;
+    border-radius: 16px;
+    box-shadow: 0 6px 0 #bcd2e3, 0 14px 26px #5c86a326;
   }
 
-::selection {
-    background-color: #86efada0; 
-    color: #000; 
-}
+  .craft-card--outline {
+    background: #fffaf0;
+    border: 2px solid #bcd2e3;
+    box-shadow: 0 5px 0 #bcd2e3;
+  }
 
-
-nav [data-active='true'] {
-    background-color: #86efac;
-}
-
-/* Gradient container */
-.gradients {
-    z-index: -1;
+  /* --- washi tape -------------------------------------------------- */
+  .tape {
     position: absolute;
-    height: 110vh; 
-    width: 100%;
-    will-change: transform;
-}
+    top: -10px;
+    left: 50%;
+    width: 72px;
+    height: 20px;
+    transform: translateX(-50%) rotate(-4deg);
+    background: #e9cf8fcc;
+    border-left: 1px dashed #c9a95a;
+    border-right: 1px dashed #c9a95a;
+    pointer-events: none;
+  }
+  .tape--left {
+    left: 26px;
+    transform: rotate(-6deg);
+  }
+  .tape--right {
+    left: auto;
+    right: 26px;
+    transform: rotate(5deg);
+  }
 
-/* Individual gradients */
-.gradient {
-    height: 500px;
-    width: 500px;
-    position: fixed;
-    border-radius: 100%;
-    filter: blur(80px);
-    opacity: 0.5;
-    animation: float 6s infinite ease-in-out alternate;
-}
+  /* --- felt badge / stitched circle -------------------------------- */
+  .felt-badge {
+    position: relative;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: #fffaf0;
+    box-shadow: 0 0 0 3px #bcd2e3, 0 6px 12px #5c86a333, inset 0 -4px 0 #e8f1f8;
+  }
+  .felt-badge::after {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 999px;
+    border: 2px dashed #0000001c;
+    pointer-events: none;
+  }
+  .felt-badge--teal {
+    box-shadow: 0 0 0 3px #2fa79b, 0 6px 12px #2fa79b33, inset 0 -4px 0 #e8f1f8;
+  }
+  .felt-badge--accent {
+    box-shadow: 0 0 0 3px #5aa9e6, 0 6px 12px #5aa9e633, inset 0 -4px 0 #e8f1f8;
+  }
+  .felt-badge--gold {
+    box-shadow: 0 0 0 3px #e9b23c, 0 6px 12px #e9b23c33, inset 0 -4px 0 #e8f1f8;
+  }
 
-/* Positioning of the gradients */
-.gradient:nth-child(1) {
-    top: 10%;
-    left: 0%;
-    background: radial-gradient(#f7ba2c, rgba(0,0,0,0));
-    animation-delay: 0s;
-}
+  /* --- buttons ----------------------------------------------------- */
+  .craft-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border: 0;
+    border-radius: 14px;
+    font-family: "Chewy", system-ui, cursive;
+    font-size: 1.05rem;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    color: #fff;
+    background: #5aa9e6;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 5px 0 #2f7fb0, 0 10px 18px #5aa9e640;
+    outline: 3px dashed #fff8ea;
+    outline-offset: -8px;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .craft-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 #2f7fb0, 0 12px 20px #5aa9e655;
+  }
+  .craft-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #2f7fb0;
+  }
 
-.gradient:nth-child(2) {
-    top: 0%;
-    right: 0%;
-    background: radial-gradient(#40c9ff, rgba(0,0,0,0));
-    animation-delay: 0s;
-}
+  .craft-btn--teal {
+    background: #2fa79b;
+    box-shadow: 0 5px 0 #1f7d74, 0 10px 18px #2fa79b40;
+  }
+  .craft-btn--teal:hover {
+    box-shadow: 0 7px 0 #1f7d74, 0 12px 20px #2fa79b55;
+  }
+  .craft-btn--teal:active {
+    box-shadow: 0 2px 0 #1f7d74;
+  }
 
-.gradient:nth-child(3) {
-    bottom: 10%;
-    right: 40%;
-    background: radial-gradient(#ea5459, rgba(0,0,0,0));
-    animation-delay: 0s;
-}
+  .craft-btn--paper {
+    color: #2fa79b;
+    background: #fffdf7;
+    border: 2px solid #9dc0d8;
+    box-shadow: 0 6px 0 #9dc0d8, 0 12px 20px #5c86a33d;
+    outline: none;
+  }
+  .craft-btn--paper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #9dc0d8, 0 14px 22px #5c86a34d;
+  }
+  .craft-btn--paper:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #9dc0d8;
+  }
 
-/* Floating animation */
-@keyframes float {
-    0% {
-        transform: scale(1) translate(0px, 0px);
-    }
-    50% {
-        transform: scale(1.2) translate(30px, -30px);
-    }
-    100% {
-        transform: scale(1) translate(0px, 0px);
-    }
+  /* --- chips / pills ----------------------------------------------- */
+  .craft-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: #f6ecd8;
+    color: #8a7561;
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: inset 0 0 0 2px #fff;
+  }
+  .craft-chip--teal {
+    background: #eaf6f2;
+    color: #1f7d74;
+  }
+  .craft-chip--accent {
+    background: #e6f2fb;
+    color: #2f7fb0;
+  }
+  .craft-chip--gold {
+    background: #fbf1d6;
+    color: #a37c17;
+  }
+
+  /* --- eyebrow label ----------------------------------------------- */
+  .craft-eyebrow {
+    font-family: "Baloo 2", system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2fa79b;
+  }
+
+  /* --- stitched divider -------------------------------------------- */
+  .stitch-rule {
+    border: 0;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, #bcd2e3 0 6px, transparent 6px 13px);
+  }
+
+  /* --- emoji helper ------------------------------------------------ */
+  .emoji {
+    font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    line-height: 1;
+    display: inline-block;
+  }
 }

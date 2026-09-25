@@ -1,7 +1,6 @@
 ---
-import Nav from "../components/Nav.astro";
 import "../styles/global.css";
-const { title } = Astro.props;
+const { title, noindex = false } = Astro.props;
 const siteTitle = "Farooq Zahid - DevOps Engineer & Software Developer";
 const pageTitle = title ? `${title} | Farooq Zahid` : siteTitle;
 const description =
@@ -16,15 +15,19 @@ const description =
     <!-- Title and Description -->
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <!-- Open Graph Meta Tags (For Facebook, LinkedIn, etc.) -->
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
     <meta
       property="og:image"
-      content="https://farooqzahid.vercel.app/assets/home-preview.png"
+      content="https://mfarooqzahid.github.io/assets/home-preview.png"
     />
-    <meta property="og:url" content="https://farooqzahid.vercel.app" />
+    <meta
+      property="og:url"
+      content={`https://mfarooqzahid.github.io${Astro.url.pathname}`}
+    />
     <meta property="og:type" content="website" />
 
     <!-- Twitter Card Meta Tags (For Twitter Previews) -->
@@ -33,14 +36,12 @@ const description =
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content="https://farooqzahid.vercel.app/assets/home-preview.png"
+      content="https://mfarooqzahid.github.io/assets/home-preview.png"
     />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
   </head>
   <body>
-    <Nav />
     <slot />
   </body>
 </html>

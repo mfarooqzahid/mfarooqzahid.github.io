@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import MinimalLayout from "../../layout/MinimalLayout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("custom");
+  return pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<MinimalLayout title={page.data.title}>
+  <p class="not-prose mb-8 text-sm">
+    <a class="text-blue-600 underline" href="/pages">← /pages</a>
+  </p>
+
+  <h1>
+    {page.data.icon && !page.data.icon.startsWith("http") && (
+      <span>{page.data.icon} </span>
+    )}
+    {page.data.title}
+  </h1>
+
+  {page.data.tagline && <p>{page.data.tagline}</p>}
+
+  {
+    page.data.links && (
+      <ul class="not-prose m-0 flex list-none flex-wrap gap-3 p-0">
+        {page.data.links.map((link) => (
+          <li class="m-0">
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-800 no-underline hover:bg-gray-50"
+            >
+              {link.icon && !link.icon.startsWith("http") && `${link.icon} `}
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {page.data.hero && <img src={page.data.hero} alt={page.data.title} />}
+
+  <Content />
+
+  {
+    page.data.screenshots && (
+      <div class="not-prose mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        {page.data.screenshots.map((screenshot) => (
+          <img
+            src={screenshot}
+            alt={`${page.data.title} screenshot`}
+            class="m-0 h-full w-full rounded-md border border-gray-200 object-cover"
+          />
+        ))}
+      </div>
+    )
+  }
+</MinimalLayout>
