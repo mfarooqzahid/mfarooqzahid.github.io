@@ -1,21 +1,18 @@
 ---
-title: "ENI Solution - Automated Staff Attendance & Event Management System" 
-description: "A smart system for automated staff attendance and event scheduling." 
+title: "ENI Solution - Automated Staff Attendance & Event Management System"
+description: "A smart system for automated staff attendance and event scheduling."
 category: "flutter"
-technologies: ["Flutter", "Firebase", "Facial Recognition", "QR Code", "Bloc"]  
-image: "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739677692/Purple_Pink_Gradient_Mobile_Application_Presentation_l3drbw.png"
-
-screenshots:  
- - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739592295/Screenshot_2025-02-15-08-55-09-56_148af10deaf3dea21951e29b4086c8f2_oyv20e" 
- 
- - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739592295/Screenshot_2025-02-15-09-00-18-41_c548eb1b092a3526a95cb6e48a87ff37_z58gm8.jpg"
- 
- - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739592295/Screenshot_2025-02-15-08-55-03-84_148af10deaf3dea21951e29b4086c8f2_fnybbs.jpg"
-
- - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739592295/Screenshot_2025-02-15-09-00-01-11_c548eb1b092a3526a95cb6e48a87ff37_t5xal8.jpg"
- - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739592465/Screenshot_2025-02-15-09-07-01-38_148af10deaf3dea21951e29b4086c8f2_oxjgoz.jpg"
- - "https://res.cloudinary.com/dsqwkw7hu/image/upload/v1739592464/Screenshot_2025-02-15-09-07-06-68_148af10deaf3dea21951e29b4086c8f2_bicxdc.jpg"
----  
+technologies: ["Flutter", "Firebase", "Facial Recognition", "QR Code", "Bloc"]
+image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/banner.png"
+screenshots:
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/000002.jpg"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/000003.jpeg"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/000004.jpg"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/000005.jpg"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/000006.jpg"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/000007.jpg"
+---
+  
 
 ## **Overview**  
 **ENI Solution** is a **staff attendance and event management system** that automates employee check-ins and check-outs using **facial recognition and QR code scanning**. The system includes **two mobile apps and an admin panel**, ensuring efficient event scheduling and staff tracking.  
