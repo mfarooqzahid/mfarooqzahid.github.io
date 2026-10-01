@@ -1,0 +1,135 @@
+---
+// Public privacy policy for the Play Store listings. Deliberately indexable
+// (noindex={false}) and app-agnostic so one URL serves every game listing.
+import MinimalLayout from "../layout/MinimalLayout.astro";
+
+const updated = "October 1, 2026";
+const contactEmail = "farooqinfocus@gmail.com";
+---
+
+<MinimalLayout title="Privacy Policy — Farooq Zahid" noindex={false}>
+  <p class="not-prose mb-8 text-sm">
+    <a class="text-blue-600 underline" href="/">← mfarooqzahid.github.io</a>
+  </p>
+
+  <h1>Privacy Policy</h1>
+  <p><em>Last updated: {updated}</em></p>
+
+  <p>
+    This Privacy Policy explains how Farooq Zahid ("we", "us") handles
+    information in the mobile games <strong>Cat Stack</strong> and
+    <strong>Emoji Mashup</strong> (each, an "App"), published on Google Play.
+  </p>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>The Apps are offline games for children. There are no accounts and no
+      sign-in.</li>
+    <li>We do not collect or store personal information about you or your
+      child.</li>
+    <li>Game progress and settings are stored only on your device.</li>
+    <li>The Apps use Google Mobile Ads to show ads and Google Play Billing for
+      the optional "Remove Ads" purchase. These Google services process limited
+      data as described below.</li>
+  </ul>
+
+  <h2>Information we collect</h2>
+  <p>
+    We do not ask for or collect personal information such as names, email
+    addresses, phone numbers, contacts, photos, or precise location. The Apps
+    contain no analytics or crash-reporting SDK.
+  </p>
+  <p>
+    Game progress (levels completed, stars) and preferences (sound, music, crate
+    speed) are saved locally on your device using the operating system's
+    storage. This information stays on the device, is not transmitted to us, and
+    is removed when you uninstall an App.
+  </p>
+
+  <h2>Advertising</h2>
+  <p>
+    The Apps use <strong>Google Mobile Ads (AdMob)</strong> to show interstitial
+    ads between levels. Google and its advertising partners may automatically
+    collect and process certain information in connection with serving and
+    measuring ads, such as device type and identifiers, IP address, coarse
+    location derived from the IP address, and ad interactions.
+  </p>
+  <p>
+    Because the Apps are directed to children, every ad request is made with
+    child-directed treatment enabled and a maximum ad content rating of "G"
+    (general audiences). As a result, ads are requested in a child-appropriate,
+    non-personalized way, and the Android advertising identifier is not used to
+    personalize ads for these Apps.
+  </p>
+  <p>
+    Google's handling of this data is governed by Google's Privacy Policy and
+    its advertising policies:
+    <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer"
+      >policies.google.com/privacy</a
+    >
+    and
+    <a
+      href="https://policies.google.com/technologies/ads"
+      target="_blank"
+      rel="noreferrer">How Google uses information from sites or apps that use our services</a
+    >.
+  </p>
+
+  <h2>In-app purchases</h2>
+  <p>
+    The Apps offer one optional purchase, <strong>Remove Ads</strong>. Payments
+    are processed by <strong>Google Play Billing</strong>. We do not receive or
+    store your payment details; Google handles that information under its own
+    terms and privacy policy. If you make this purchase, the Apps stop showing
+    ads and remember the purchase locally on your device.
+  </p>
+
+  <h2>Children's privacy</h2>
+  <p>
+    The Apps are designed for children and follow applicable children's privacy
+    laws, including the U.S. Children's Online Privacy Protection Act (COPPA)
+    and the GDPR provisions for children. We do not knowingly collect personal
+    information from children. Ad requests are child-directed and limited to a
+    "G" content rating, as described above.
+  </p>
+  <p>
+    If you are a parent or guardian and believe your child has provided personal
+    information, please contact us at
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Because we operate no
+    accounts or servers, we hold no personal data to review or delete.
+  </p>
+
+  <h2>Data sharing</h2>
+  <p>
+    We do not sell or share personal information. The only third-party services
+    that may process data in the Apps are Google Mobile Ads and Google Play
+    Billing, as described above, and only for advertising and payment
+    processing.
+  </p>
+
+  <h2>Data retention and security</h2>
+  <p>
+    We retain no personal data on our own systems. Locally stored game data
+    remains on your device until you clear an App's data or uninstall it.
+  </p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>You can reset or delete your advertising ID in your device settings
+      (Settings → Google → Ads).</li>
+    <li>You can remove ads permanently with the optional in-app purchase.</li>
+    <li>Uninstalling an App removes all locally stored game data.</li>
+  </ul>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this policy from time to time. Changes are posted on this page
+    with a new "Last updated" date.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy? Email
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+  </p>
+</MinimalLayout>
