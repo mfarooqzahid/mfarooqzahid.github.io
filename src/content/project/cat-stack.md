@@ -5,14 +5,14 @@ category: "flutter"
 technologies: ["Flutter", "Flame", "Provider", "AdMob", "In-App Purchase"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/banner.png"
 screenshots:
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_01_stack_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_02_worlds_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_03_controls_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_04_offline_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_05_stars_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_06_levels_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_07_kids_1080x1920.png"
-  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/screenshot_08_settings_1080x1920.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000001.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000002.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000003.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000004.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000005.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000006.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000007.png"
+  - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000008.png"
 ---
 
 ## Overview
