@@ -4,6 +4,7 @@ description: "A local-first invoice and quotation app for AC service businesses,
 category: "flutter"
 technologies: ["Flutter", "BLoC", "Drift", "PDF", "Web"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/cool-air-craft/banner.png"
+video: "https://www.youtube.com/shorts/0pcKNSWLxiw"
 screenshots:
   - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cool-air-craft/000001.jpg"
   - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cool-air-craft/000002.jpg"

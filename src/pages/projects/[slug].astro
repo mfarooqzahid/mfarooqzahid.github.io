@@ -14,6 +14,16 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await project.render();
 const screenshots = project.data.screenshots ?? [];
+
+const getYouTubeId = (url: string) =>
+  url.match(
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([\w-]+)/
+  )?.[1];
+
+const video = project.data.video;
+const videoEmbed = video
+  ? `https://www.youtube.com/embed/${getYouTubeId(video) ?? ""}`
+  : null;
 ---
 
 <Layout title={project.data.title}>
@@ -47,6 +57,26 @@ const screenshots = project.data.screenshots ?? [];
           />
         </div>
       )}
+
+      {
+        videoEmbed && (
+          <div class="mb-8">
+            <h2 class="mb-4 text-2xl">
+              <span class="emoji">▶️</span> Video
+            </h2>
+            <div class="aspect-video overflow-hidden rounded-2xl border-2 border-craft-tan bg-craft-ink shadow-[0_6px_0_#bcd2e3,0_14px_26px_#5c86a326]">
+              <iframe
+                src={videoEmbed}
+                title={`${project.data.title} video`}
+                class="h-full w-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          </div>
+        )
+      }
 
       <div class="craft-card px-6 py-8 sm:px-9">
         <Prose>
