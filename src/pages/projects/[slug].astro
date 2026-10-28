@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layout/Layout.astro";
+import ProjectCover from "../../components/ProjectCover.astro";
 import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
@@ -46,17 +47,7 @@ const videoEmbed = video
         </div>
       </header>
 
-      {project.data.image && (
-        <div
-          class="mb-8 aspect-video overflow-hidden rounded-2xl border-2 border-craft-tan bg-craft-line shadow-[0_6px_0_#bcd2e3,0_14px_26px_#5c86a326]"
-        >
-          <img
-            src={project.data.image}
-            alt={project.data.title}
-            class="h-full w-full object-cover"
-          />
-        </div>
-      )}
+      <ProjectCover project={project} variant="hero" class="mb-8" />
 
       {
         videoEmbed && (

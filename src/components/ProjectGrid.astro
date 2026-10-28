@@ -1,4 +1,6 @@
 ---
+import ProjectCover from "./ProjectCover.astro";
+
 const { projects, variant = "flutter" } = Astro.props;
 const isDevops = variant === "devops";
 ---
@@ -11,30 +13,7 @@ const isDevops = variant === "devops";
     >
       <span class="tape"></span>
 
-      <div
-        class:list={[
-          "mb-4 aspect-video overflow-hidden rounded-xl border-2 border-craft-tan bg-craft-line",
-          isDevops &&
-            "flex items-center justify-center border-craft-ink bg-craft-ink px-6 text-center",
-        ]}
-      >
-        {project.data.image ? (
-          <img
-            src={project.data.image}
-            alt={project.data.title}
-            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
-        ) : (
-          <div>
-            <p class="craft-eyebrow !text-craft-felt mb-2">
-              {isDevops ? "DevOps" : "Project"}
-            </p>
-            <p class="font-display text-xl leading-tight !text-craft-paper">
-              {project.data.title}
-            </p>
-          </div>
-        )}
-      </div>
+      <ProjectCover project={project} class="mb-4" />
 
       <h3 class="text-xl leading-snug">{project.data.title}</h3>
       <p class="mt-1 mb-4 text-craft-muted">{project.data.description}</p>
