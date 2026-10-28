@@ -1,23 +1,34 @@
 ---
-title: "AWS DevOps Pipeline"
-description: "End-to-end CI/CD pipeline built with Terraform, Jenkins, Docker, Amazon ECR, ECS Fargate, and CloudWatch."
+title: "Minions: CI/CD Pipeline to ECS Fargate"
+description: "A Jenkins pipeline that builds a Docker image, pushes it to Amazon ECR, and deploys it to ECS Fargate — with the infrastructure defined in Terraform."
 category: "devops"
-technologies: ["AWS", "Terraform", "Jenkins", "Docker", "Amazon ECR", "ECS Fargate", "CloudWatch"]
+technologies: ["Terraform", "Jenkins", "Docker", "Amazon ECR", "Amazon ECS Fargate"]
 ---
 
-## Overview
+## Context
 
-**AWS DevOps Pipeline** is an end-to-end CI/CD setup for building, packaging, and deploying containerized applications on AWS. The project focuses on repeatable infrastructure, automated delivery, and production visibility.
+Shipping a container by hand is slow and error prone. I wanted a pipeline where
+a code push ends up as a running service with no manual steps.
 
-## Highlights
+## What I Built
 
-- Infrastructure managed with **Terraform**
-- CI/CD workflow powered by **Jenkins**
-- Container builds with **Docker**
-- Image storage through **Amazon ECR**
-- Deployment on **ECS Fargate**
-- Logs and operational visibility through **CloudWatch**
+- Infrastructure defined in **Terraform**.
+- A **Jenkins** pipeline that builds a Docker image and pushes it to **Amazon
+  ECR**.
+- Deployment of that image to **ECS Fargate**, so there are no servers to
+  manage.
+- I presented the project and walked others through how it worked.
+
+## How It Flows
+
+1. Terraform provisions the ECR repository, ECS cluster, task definition, and
+   service.
+2. Jenkins builds the application image and pushes it to ECR.
+3. A new task definition revision is registered and the ECS service rolls out
+   the updated container.
 
 ## Outcome
 
-The pipeline demonstrates a practical deployment workflow that connects infrastructure automation, container delivery, and cloud monitoring into one repeatable system.
+A code change moves from commit to a running Fargate service without manual
+build or deploy steps. Explaining the pipeline to others also forced me to make
+the moving parts — and the hand-offs between them — much clearer.
