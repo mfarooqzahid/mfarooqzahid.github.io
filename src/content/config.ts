@@ -4,11 +4,14 @@ const project = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
     category: z.enum(["devops", "flutter"]),
     technologies: z.array(z.string()),
     image: z.string().optional(),
     video: z.string().optional(),
     screenshots: z.array(z.string()).optional(),
+    storeUrl: z.string().url().optional(),
   }),
 });
 

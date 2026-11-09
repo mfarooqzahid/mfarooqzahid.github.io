@@ -3,6 +3,7 @@ title: "Cat Stack - Offline One-Tap Puzzle Game"
 description: "An offline, one-tap block puzzle for kids: drop crates to build a staircase and help the cat climb to the golden fish."
 category: "flutter"
 technologies: ["Flutter", "Flame", "Provider", "AdMob", "In-App Purchase"]
+storeUrl: "https://play.google.com/store/apps/details?id=com.farooq.catstack"
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/banner.png"
 screenshots:
   - "https://raw.githubusercontent.com/mfarooqzahid/media/main/cat-stack/000001.png"

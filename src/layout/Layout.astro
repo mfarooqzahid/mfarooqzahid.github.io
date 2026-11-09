@@ -1,10 +1,41 @@
 ---
 import "../styles/global.css";
-const { title, noindex = false } = Astro.props;
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+  fullTitle?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description = "Farooq Zahid builds and deploys reliable software systems with AWS, Docker, Terraform, Jenkins, Kubernetes, Linux, Flutter, Go, and backend technologies.",
+  image = "/assets/home-preview.png",
+  type = "website",
+  noindex = false,
+  fullTitle = false,
+  jsonLd,
+} = Astro.props;
+
+const siteName = "Farooq Zahid";
 const siteTitle = "Farooq Zahid - DevOps Engineer & Software Developer";
-const pageTitle = title ? `${title} | Farooq Zahid` : siteTitle;
-const description =
-  "Farooq Zahid builds and deploys reliable software systems with AWS, Docker, Terraform, Jenkins, Kubernetes, Linux, Flutter, Go, and backend technologies.";
+const pageTitle = title
+  ? fullTitle
+    ? title
+    : `${title} | ${siteName}`
+  : siteTitle;
+
+const site = Astro.site ?? new URL("https://mfarooqzahid.github.io");
+const pathname = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, site).href;
+const ogImage = new URL(image, site).href;
+const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <html lang="en">
@@ -15,31 +46,56 @@ const description =
     <!-- Title and Description -->
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="author" content={siteName} />
+    <meta
+      name="robots"
+      content={noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#eef7fe" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- Open Graph Meta Tags (For Facebook, LinkedIn, etc.) -->
-    <meta property="og:title" content={siteTitle} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta
-      property="og:image"
-      content="https://mfarooqzahid.github.io/assets/home-preview.png"
-    />
-    <meta
-      property="og:url"
-      content={`https://mfarooqzahid.github.io${Astro.url.pathname}`}
-    />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${pageTitle} preview`} />
+    {image === "/assets/home-preview.png" && (
+      <>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+      </>
+    )}
 
     <!-- Twitter Card Meta Tags (For Twitter Previews) -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content="https://mfarooqzahid.github.io/assets/home-preview.png"
-    />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${pageTitle} preview`} />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {jsonLdBlocks.map((block) => (
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify(block)}
+      />
+    ))}
   </head>
   <body>
     <slot />

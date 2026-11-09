@@ -1,6 +1,8 @@
 ---
 title: "ENI Solution - Automated Staff Attendance & Event Management System"
 description: "A smart system for automated staff attendance and event scheduling."
+seoTitle: "ENI Solution — Attendance & Events"
+seoDescription: "A smart Flutter system for automated staff attendance and event scheduling, with facial recognition, QR check-in, and Firebase."
 category: "flutter"
 technologies: ["Flutter", "Firebase", "Facial Recognition", "QR Code", "Bloc"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/eni-solutions/banner.png"

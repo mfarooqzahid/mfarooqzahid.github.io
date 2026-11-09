@@ -1,6 +1,7 @@
 ---
 title: "Cloud Monitoring & Observability Stack"
 description: "The main monitoring tools set up side by side: CloudWatch, Prometheus, Grafana, and the ELK stack."
+seoDescription: "A side-by-side monitoring and observability stack with CloudWatch, Prometheus, Grafana, and the ELK stack."
 category: "devops"
 technologies: ["CloudWatch", "Prometheus", "Node Exporter", "Grafana", "Elasticsearch", "Kibana", "Filebeat", "Elastic Agent"]
 ---

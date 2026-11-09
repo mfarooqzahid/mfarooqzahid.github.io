@@ -1,6 +1,7 @@
 ---
 title: "Darzi - Tailor's Register & Order Book"
 description: "A local-first register for tailors: customers, measurements and orders in one offline app."
+seoDescription: "A local-first register for tailors: customers, measurements, and orders in one offline Flutter app."
 category: "flutter"
 technologies: ["Flutter", "BLoC", "Drift", "Offline"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/darzi/banner.png"

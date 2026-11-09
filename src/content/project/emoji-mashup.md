@@ -3,6 +3,7 @@ title: "Emoji Mashup - Offline Emoji Puzzle Game"
 description: "An offline puzzle game for kids that combines illustrated ingredients into new creations across 100+ levels."
 category: "flutter"
 technologies: ["Flutter", "BLoC", "OpenMoji", "Shorebird"]
+storeUrl: "https://play.google.com/store/apps/details?id=com.farooq.emojimashup"
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/emoji-mashup/feature_graphic_1024x500.png"
 screenshots:
   - "https://raw.githubusercontent.com/mfarooqzahid/media/main/emoji-mashup/000001.png"

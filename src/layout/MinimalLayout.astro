@@ -5,7 +5,43 @@
 // (neutral palette), not the craft styles.
 import "../styles/markdown.css";
 
-const { title = "Pages", noindex = true } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  image?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title = "Pages",
+  description = "Farooq Zahid — DevOps Engineer & Software Developer.",
+  noindex = true,
+  image = "/assets/home-preview.png",
+  jsonLd,
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://mfarooqzahid.github.io");
+const pathname = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, site).href;
+const ogImage = new URL(image, site).href;
+
+const defaultJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: title,
+  description,
+  url: canonical,
+};
+const jsonLdBlocks = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : noindex
+    ? []
+    : [defaultJsonLd];
 ---
 
 <!doctype html>
@@ -14,7 +50,45 @@ const { title = "Pages", noindex = true } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="description" content={description} />
+    <meta name="author" content="Farooq Zahid" />
+    <meta
+      name="robots"
+      content={noindex
+        ? "noindex, nofollow"
+        : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:site_name" content="Farooq Zahid" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${title} preview`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${title} preview`} />
+
+    {jsonLdBlocks.map((block) => (
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify(block)}
+      />
+    ))}
+
     <style>
       html {
         color-scheme: light;

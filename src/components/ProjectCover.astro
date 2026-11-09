@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 interface Props {
   project: CollectionEntry<"project">;
@@ -22,11 +23,14 @@ const isHero = variant === "hero";
 >
   {
     project.data.image ? (
-      <img
+      <Image
         src={project.data.image}
         alt={project.data.title}
+        inferSize
+        width={isHero ? 1200 : 640}
         class="project-cover__image transition-transform duration-300 group-hover:scale-105"
         loading={isHero ? "eager" : "lazy"}
+        decoding="async"
       />
     ) : (
       <div class="project-cover__inner">

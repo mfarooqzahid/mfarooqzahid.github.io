@@ -4,9 +4,67 @@ import ContactButtons from "../components/ContactButtons.astro";
 
 const devopsStack = ["AWS", "Docker", "Terraform", "Jenkins", "Kubernetes", "Linux", "Nginx"];
 const devStack = ["Flutter", "Go", "PostgreSQL", "Supabase", "Firebase"];
+
+const site = Astro.site ?? new URL("https://mfarooqzahid.github.io");
+const homeUrl = new URL("/", site).href;
+const description =
+  "I build and deploy reliable systems with AWS, Docker, Terraform, Kubernetes, Linux, Go, and Flutter. Explore selected DevOps and mobile app projects.";
+
+const homeJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${homeUrl}#person`,
+      name: "Farooq Zahid",
+      url: homeUrl,
+      jobTitle: "DevOps Engineer & Software Developer",
+      description:
+        "DevOps engineer and software developer focused on reliable, scalable systems and mobile apps.",
+      sameAs: [
+        "https://www.linkedin.com/in/mfarooqzahid/",
+        "https://instagram.com/mfarooqzahid.app",
+      ],
+      knowsAbout: [
+        "AWS",
+        "Docker",
+        "Terraform",
+        "Jenkins",
+        "Kubernetes",
+        "Linux",
+        "Flutter",
+        "Go",
+        "PostgreSQL",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${homeUrl}#website`,
+      name: "Farooq Zahid",
+      alternateName: ["mfarooqzahid.github.io"],
+      url: homeUrl,
+      description,
+      author: { "@id": `${homeUrl}#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${homeUrl}#webpage`,
+      url: homeUrl,
+      name: "Farooq Zahid — DevOps Engineer & Software Developer",
+      description,
+      isPartOf: { "@id": `${homeUrl}#website` },
+      mainEntity: { "@id": `${homeUrl}#person` },
+    },
+  ],
+};
 ---
 
-<Layout title="Welcome">
+<Layout
+  title="Farooq Zahid — DevOps Engineer & Software Developer"
+  fullTitle
+  description={description}
+  jsonLd={homeJsonLd}
+>
   <!-- ============ HERO ============ -->
   <section class="px-5 pt-14 pb-16 sm:pt-20">
     <div class="mx-auto w-full max-w-5xl">
@@ -17,8 +75,13 @@ const devStack = ["Flutter", "Go", "PostgreSQL", "Supabase", "Firebase"];
           class="felt-badge felt-badge--accent mx-auto mb-6 h-32 w-32 overflow-hidden sm:h-36 sm:w-36"
         >
           <img
-            src="/assets/photo.jpg"
+            src="/assets/photo-512.jpg"
+            srcset="/assets/photo-256.webp 256w, /assets/photo-512.webp 512w"
+            sizes="144px"
+            width="512"
+            height="512"
             alt="Farooq Zahid"
+            decoding="async"
             class="h-[84%] w-[84%] rounded-full object-cover"
           />
         </div>
@@ -37,7 +100,7 @@ const devStack = ["Flutter", "Go", "PostgreSQL", "Supabase", "Firebase"];
 
         <div class="mt-9 flex justify-center">
           <a
-            href="/projects"
+            href="/projects/"
             class="craft-btn w-full max-w-sm !py-4 text-lg sm:text-xl"
           >
             <span class="emoji">🧩</span>

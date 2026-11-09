@@ -1,6 +1,7 @@
 ---
 title: "MX Bill Pay - Seamless & Secure Bill Payment Solution"
 description: "A reliable mobile payment solution for managing electricity, airtime, data, cable, tolls, and internet bills."
+seoTitle: "MX Bill Pay — Secure Bill Payments"
 category: "flutter"
 technologies: ["Flutter", "REST APIs", "GetX"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/mx-bill-pay/banner"

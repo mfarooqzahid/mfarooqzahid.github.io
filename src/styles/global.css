@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Baloo+2:wght@400;500;600;700;800&family=Noto+Color+Emoji&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Baloo+2:wght@700;800&display=swap');
 
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
@@ -13,11 +13,11 @@
   --color-craft-paper-2: #fffaf0;
   --color-craft-ink: #2c3a4b;
   --color-craft-body: #3a2e22;
-  --color-craft-muted: #8a7561;
+  --color-craft-muted: #6f5d4b;
   --color-craft-tan: #bcd2e3;
   --color-craft-tan-2: #9dc0d8;
   --color-craft-line: #dbe8f2;
-  --color-craft-accent: #5aa9e6;
+  --color-craft-accent: #1f6d99;
   --color-craft-accent-dark: #2f7fb0;
   --color-craft-teal: #2fa79b;
   --color-craft-teal-dark: #1f7d74;
@@ -146,36 +146,36 @@
     line-height: 1;
     letter-spacing: 0.5px;
     color: #fff;
-    background: #5aa9e6;
+    background: #1f6d99;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 5px 0 #2f7fb0, 0 10px 18px #5aa9e640;
+    box-shadow: 0 5px 0 #14506f, 0 10px 18px #1f6d9940;
     outline: 3px dashed #fff8ea;
     outline-offset: -8px;
     transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
   .craft-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 0 #2f7fb0, 0 12px 20px #5aa9e655;
+    box-shadow: 0 7px 0 #14506f, 0 12px 20px #1f6d9955;
   }
   .craft-btn:active {
     transform: translateY(3px);
-    box-shadow: 0 2px 0 #2f7fb0;
+    box-shadow: 0 2px 0 #14506f;
   }
 
   .craft-btn--teal {
-    background: #2fa79b;
-    box-shadow: 0 5px 0 #1f7d74, 0 10px 18px #2fa79b40;
+    background: #1f7d74;
+    box-shadow: 0 5px 0 #145a53, 0 10px 18px #1f7d7440;
   }
   .craft-btn--teal:hover {
-    box-shadow: 0 7px 0 #1f7d74, 0 12px 20px #2fa79b55;
+    box-shadow: 0 7px 0 #145a53, 0 12px 20px #1f7d7455;
   }
   .craft-btn--teal:active {
-    box-shadow: 0 2px 0 #1f7d74;
+    box-shadow: 0 2px 0 #145a53;
   }
 
   .craft-btn--paper {
-    color: #2fa79b;
+    color: #1f7d74;
     background: #fffdf7;
     border: 2px solid #9dc0d8;
     box-shadow: 0 6px 0 #9dc0d8, 0 12px 20px #5c86a33d;
@@ -198,7 +198,7 @@
     padding: 0.35rem 0.8rem;
     border-radius: 999px;
     background: #f6ecd8;
-    color: #8a7561;
+    color: #6f5d4b;
     font-family: "Baloo 2", system-ui, sans-serif;
     font-size: 0.82rem;
     font-weight: 700;
@@ -207,11 +207,11 @@
   }
   .craft-chip--teal {
     background: #eaf6f2;
-    color: #1f7d74;
+    color: #1b7068;
   }
   .craft-chip--accent {
     background: #e6f2fb;
-    color: #2f7fb0;
+    color: #27678f;
   }
   .craft-chip--gold {
     background: #fbf1d6;
@@ -225,7 +225,7 @@
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #2fa79b;
+    color: #1f7d74;
   }
 
   /* --- stitched divider -------------------------------------------- */
@@ -237,7 +237,7 @@
 
   /* --- emoji helper ------------------------------------------------ */
   .emoji {
-    font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     line-height: 1;
     display: inline-block;
   }

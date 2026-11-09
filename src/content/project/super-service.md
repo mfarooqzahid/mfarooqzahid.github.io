@@ -1,6 +1,7 @@
 ---
 title: "Super Service - On-Demand Services Marketplace"
 description: "A two-sided services marketplace where customers post jobs and partners bid, with contracts, wallets and reviews."
+seoTitle: "Super Service — Services Marketplace"
 category: "flutter"
 technologies: ["Flutter", "Supabase", "Bloc", "Firebase", "go_router"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/super-service/banner.png"

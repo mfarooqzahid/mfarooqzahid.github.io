@@ -1,6 +1,8 @@
 ---
 title: "Inventory Flow - Smart Inventory Management System"
 description: "A real-time inventory management system for manufacturers and suppliers."
+seoTitle: "Inventory Flow — Inventory Management"
+seoDescription: "A real-time inventory management system for manufacturers and suppliers, built with Flutter, Supabase, and Bloc."
 category: "flutter"
 technologies: ["Flutter", "Supabase", "Bloc"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/inventory-flow/banner.png"

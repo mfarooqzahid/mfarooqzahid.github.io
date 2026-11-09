@@ -1,6 +1,7 @@
 ---
 title: "Containerized Notes API with Terraform, Ansible & Jenkins"
 description: "A Node.js and MongoDB notes service shipped end to end with Docker Compose, Nginx, Terraform, Ansible, and Jenkins."
+seoTitle: "Containerized Notes API on AWS"
 category: "devops"
 technologies: ["Docker", "Docker Compose", "Node.js", "MongoDB", "Nginx", "Terraform", "Ansible", "Jenkins", "GitHub Actions", "AWS EC2"]
 ---

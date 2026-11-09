@@ -1,6 +1,7 @@
 ---
 title: "Otaku TV - Premium Anime Streaming Platform"
 description: "A series-sharing platform where users pay to watch content shared by administrators."
+seoDescription: "A Flutter series-sharing platform where users pay to watch content shared by administrators, with secure streaming and access control."
 category: "flutter"
 technologies: ["Flutter", "GetX", "Custom API"]
 image: "https://raw.githubusercontent.com/mfarooqzahid/media/main/otaku-tv/banner"
