@@ -1,50 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 960" width="2000" height="960">
-<title>Load testing an ECS service before and after autoscaling</title>
+<title>Load test: ECS service before and after autoscaling</title>
 <defs>
   <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa3b2"/>
-  </marker>
-  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-    <path d="M 0 0 L 10 5 L 0 10 z" fill="#4d8dff"/>
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b96a5"/>
   </marker>
 </defs>
-<rect width="2000" height="960" fill="#050505"/>
-<text x="90" y="82" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700" fill="#f2f4f7">Load test: ECS service before and after autoscaling</text>
-<rect x="100" y="160" width="380" height="120" fill="#141414" stroke="#33383f" stroke-width="2"/><text x="128" y="210" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">Load generator</text><text x="128" y="246" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">same traffic pattern, both runs</text>
-<rect x="560" y="160" width="390" height="120" fill="#141414" stroke="#33383f" stroke-width="2"/><text x="588" y="210" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">Application Load Balancer</text><text x="588" y="246" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">spreads requests across tasks</text>
-<line x1="480" y1="220" x2="554" y2="220" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
-<line x1="950" y1="220" x2="994" y2="220" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="1000" y="110" width="900" height="380" fill="#141414" stroke="#33383f" stroke-width="2"/>
-<text x="1030" y="150" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#9aa3b2" letter-spacing="2.5">ECS SERVICE</text>
-<rect x="1040" y="190" width="230" height="130" fill="#141414" stroke="#33383f" stroke-width="2"/>
-<text x="1064" y="240" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">Task 1</text>
-<text x="1064" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">fixed count</text>
-<rect x="1320" y="190" width="230" height="130" fill="#141414" stroke="#33383f" stroke-width="2"/>
-<text x="1344" y="240" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">Task 2</text>
-<text x="1344" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">fixed count</text>
-<rect x="1600" y="190" width="230" height="130" fill="#0b1a2e" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="1624" y="240" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">Task 3 +</text>
-<text x="1624" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#b8c4d8">added in run B</text>
-<text x="1040" y="396" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#9aa3b2">Run A keeps the task count fixed. Run B lets it grow with load.</text>
-<rect x="100" y="600" width="700" height="250" fill="#141414" stroke="#33383f" stroke-width="2"/>
-<text x="140" y="650" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#9aa3b2" letter-spacing="2.5">COMPARED ACROSS BOTH RUNS</text>
-<text x="140" y="698" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#f2f4f7">p50 and p95 latency</text>
-<text x="140" y="738" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#f2f4f7">Requests per second and error rate</text>
-<text x="140" y="778" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#f2f4f7">Task count over time</text>
-<text x="140" y="818" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#f2f4f7">Time to scale out after the spike</text>
-<line x1="290" y1="280" x2="290" y2="594" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrow)"/>
-<text x="320" y="470" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">records results</text>
-<rect x="960" y="540" width="940" height="300" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-dasharray="10 8"/>
-<text x="990" y="818" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#4d8dff" letter-spacing="2">RUN B ONLY: AUTOSCALING ENABLED</text>
-<rect x="1000" y="580" width="380" height="150" fill="#0b1a2e" stroke="#2f6fdb" stroke-width="2"/>
-<text x="1024" y="632" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">CloudWatch</text>
-<text x="1024" y="670" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#b8c4d8">service metrics</text>
-<rect x="1500" y="580" width="360" height="150" fill="#0b1a2e" stroke="#2f6fdb" stroke-width="2"/>
-<text x="1524" y="632" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#f2f4f7">Application Auto Scaling</text>
-<text x="1524" y="670" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#b8c4d8">target tracking policy</text>
-<line x1="1380" y1="655" x2="1494" y2="655" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrowBlue)"/>
-<line x1="1180" y1="490" x2="1180" y2="574" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrowBlue)"/>
-<text x="1200" y="525" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">metrics</text>
-<line x1="1680" y1="580" x2="1680" y2="496" stroke="#9aa3b2" stroke-width="2" marker-end="url(#arrowBlue)"/>
-<text x="1700" y="525" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#9aa3b2">set desired count</text>
+<rect width="2000" height="960" fill="#ffffff"/>
+<text x="90" y="82" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#12161c">Load test: ECS service before and after autoscaling</text>
+<text x="90" y="124" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">The same traffic pattern, with a fixed task count and with autoscaling.</text>
+<rect x="100" y="160" width="380" height="120" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="126" y="208" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Load generator</text><text x="126" y="242" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">same traffic pattern, both runs</text>
+<rect x="560" y="160" width="390" height="120" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="586" y="208" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Application Load Balancer</text><text x="586" y="242" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">spreads requests across tasks</text>
+<line x1="480" y1="220" x2="554" y2="220" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="950" y1="220" x2="994" y2="220" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1000" y="110" width="900" height="380" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/>
+<text x="1030" y="150" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#566273" letter-spacing="2.5">ECS SERVICE</text>
+<rect x="1040" y="190" width="230" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/>
+<text x="1064" y="240" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Task 1</text>
+<text x="1064" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">fixed count</text>
+<rect x="1320" y="190" width="230" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/>
+<text x="1344" y="240" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Task 2</text>
+<text x="1344" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">fixed count</text>
+<rect x="1600" y="190" width="230" height="130" fill="#eef3ff" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="1624" y="240" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Task 3 +</text>
+<text x="1624" y="276" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">added in run B</text>
+<text x="1040" y="396" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">Run A keeps the task count fixed. Run B lets it grow with load.</text>
+<rect x="100" y="600" width="700" height="250" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/>
+<text x="140" y="650" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#566273" letter-spacing="2.5">COMPARED ACROSS BOTH RUNS</text>
+<text x="140" y="698" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#12161c">p50 and p95 latency</text>
+<text x="140" y="738" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#12161c">Requests per second and error rate</text>
+<text x="140" y="778" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#12161c">Task count over time</text>
+<text x="140" y="818" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" fill="#12161c">Time to scale out after the spike</text>
+<line x1="290" y1="280" x2="290" y2="594" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="320" y="470" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#566273">records results</text>
+<rect x="960" y="540" width="940" height="300" fill="#ffffff" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="990" y="818" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#1d4ed8" letter-spacing="2">RUN B ONLY: AUTOSCALING ENABLED</text>
+<rect x="1000" y="580" width="380" height="150" fill="#eef3ff" stroke="#1d4ed8" stroke-width="2"/><text x="1026" y="628" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">CloudWatch</text><text x="1026" y="662" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">service metrics</text>
+<rect x="1500" y="580" width="360" height="150" fill="#eef3ff" stroke="#1d4ed8" stroke-width="2"/><text x="1526" y="628" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Application Auto Scaling</text><text x="1526" y="662" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">target tracking policy</text>
+<line x1="1380" y1="655" x2="1494" y2="655" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1180" y1="490" x2="1180" y2="574" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1200" y="525" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#566273">metrics</text>
+<line x1="1680" y1="580" x2="1680" y2="496" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1700" y="525" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#566273">set desired count</text>
 </svg>

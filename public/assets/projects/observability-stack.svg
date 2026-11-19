@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 900" width="2000" height="900">
+<title>Monitoring and observability stack</title>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b96a5"/>
+  </marker>
+</defs>
+<rect width="2000" height="900" fill="#ffffff"/>
+<text x="90" y="82" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#12161c">Monitoring and observability stack</text>
+<text x="90" y="124" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">CloudWatch, Prometheus, Grafana and the ELK stack side by side.</text>
+<rect x="100" y="200" width="320" height="600" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/>
+<text x="126" y="248" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">EC2 host</text>
+<text x="126" y="298" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#3f4a5a">application</text>
+<text x="126" y="338" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#3f4a5a">system metrics</text>
+<text x="126" y="378" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#3f4a5a">logs</text>
+<rect x="500" y="200" width="300" height="140" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="526" y="248" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">CloudWatch Agent</text><text x="526" y="282" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">metrics and logs</text>
+<line x1="800" y1="270" x2="874" y2="270" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="880" y="200" width="340" height="140" fill="#eef3ff" stroke="#1d4ed8" stroke-width="2"/><text x="906" y="248" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">CloudWatch</text><text x="906" y="282" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">AWS-native metrics and logs</text>
+<line x1="420" y1="270" x2="494" y2="270" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="500" y="420" width="300" height="140" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="526" y="468" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Node Exporter</text><text x="526" y="502" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">host metrics</text>
+<line x1="800" y1="490" x2="874" y2="490" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="880" y="420" width="340" height="140" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="906" y="468" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Prometheus</text><text x="906" y="502" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">time-series metrics</text>
+<line x1="420" y1="490" x2="494" y2="490" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="500" y="640" width="300" height="140" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="526" y="688" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Filebeat</text><text x="526" y="722" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">Elastic Agent ships logs</text>
+<line x1="800" y1="710" x2="874" y2="710" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="880" y="640" width="340" height="140" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="906" y="688" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Elasticsearch</text><text x="906" y="722" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">log storage and search</text>
+<line x1="420" y1="710" x2="494" y2="710" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1220" y1="490" x2="1254" y2="490" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1260" y="420" width="340" height="140" fill="#eef3ff" stroke="#1d4ed8" stroke-width="2"/><text x="1286" y="468" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Grafana</text><text x="1286" y="502" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">dashboards and alerts</text>
+<line x1="1220" y1="710" x2="1254" y2="710" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1260" y="640" width="340" height="140" fill="#eef3ff" stroke="#1d4ed8" stroke-width="2"/><text x="1286" y="688" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Kibana</text><text x="1286" y="722" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">log exploration</text>
+</svg>

@@ -12,10 +12,7 @@ export default defineConfig({
     domains: ['raw.githubusercontent.com'],
   },
   integrations: [
-    // /pages holds standalone artifacts that are marked noindex, so keep them
-    // out of the sitemap.
     sitemap({
-      filter: (page) => !page.includes('/pages'),
       // Build-time timestamp; replace with per-page dates if content dates
       // are added to the frontmatter later.
       serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
@@ -23,6 +20,11 @@ export default defineConfig({
   ],
   redirects: {
     '/about': '/',
+  },
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+    },
   },
   vite: {
     plugins: [tailwindcss()]

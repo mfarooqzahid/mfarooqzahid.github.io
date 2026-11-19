@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1100" width="2000" height="1100">
+<title>WireGuard VPN on AWS with Terraform</title>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b96a5"/>
+  </marker>
+</defs>
+<rect width="2000" height="1100" fill="#ffffff"/>
+<text x="90" y="82" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#12161c">WireGuard VPN on AWS with Terraform</text>
+<text x="90" y="124" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">A private VPN on EC2, provisioned with reusable Terraform modules.</text>
+<rect x="100" y="240" width="300" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="126" y="288" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Client</text><text x="126" y="322" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">phone or laptop</text>
+<rect x="460" y="240" width="300" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="486" y="288" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Elastic IP</text><text x="486" y="322" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">fixed public address</text>
+<line x1="400" y1="315" x2="454" y2="315" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="760" y1="315" x2="834" y2="315" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="840" y="180" width="700" height="360" fill="none" stroke="#d3d9e1" stroke-width="2" stroke-dasharray="10 8"/><text x="870" y="218" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#566273" letter-spacing="2.5">VPC</text>
+<text x="870" y="258" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#566273" letter-spacing="2">PUBLIC SUBNET</text>
+<rect x="880" y="270" width="620" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="906" y="318" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">EC2 WireGuard server</text><text x="906" y="352" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">UDP 51820, IMDSv2, encrypted EBS</text>
+<text x="880" y="470" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">Security group: WireGuard only, no open SSH port.</text>
+<rect x="1600" y="240" width="320" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="1626" y="288" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">IAM + SSM</text><text x="1626" y="322" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">Session Manager access</text>
+<line x1="1600" y1="315" x2="1546" y2="315" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="100" y="700" width="1160" height="300" fill="none" stroke="#d3d9e1" stroke-width="2" stroke-dasharray="10 8"/><text x="130" y="738" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="600" fill="#566273" letter-spacing="2.5">TERRAFORM</text>
+<rect x="140" y="780" width="340" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="166" y="828" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#12161c">network</text><text x="166" y="862" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">VPC and subnet</text>
+<rect x="520" y="780" width="340" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="546" y="828" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#12161c">security</text><text x="546" y="862" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">security groups and IAM</text>
+<rect x="900" y="780" width="340" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="926" y="828" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#12161c">vpn-instance</text><text x="926" y="862" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">EC2, Elastic IP, EBS</text>
+<line x1="1100" y1="700" x2="1100" y2="546" stroke="#8b96a5" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+<text x="1130" y="630" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#566273">provisions</text>
+<rect x="1320" y="700" width="260" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="1346" y="748" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#12161c">S3 remote state</text><text x="1346" y="782" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">Terraform state</text>
+<line x1="1260" y1="765" x2="1314" y2="765" stroke="#8b96a5" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+<rect x="1600" y="700" width="320" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="1626" y="748" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#12161c">add_client.sh</text><text x="1626" y="782" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">SSM Run Command</text>
+<rect x="1600" y="860" width="320" height="130" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="1626" y="908" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#12161c">generate-qr.py</text><text x="1626" y="942" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#3f4a5a">client QR codes</text>
+</svg>

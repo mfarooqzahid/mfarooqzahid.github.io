@@ -4,6 +4,11 @@ description: "A Node.js and MongoDB notes app shipped end to end with Docker Com
 seoTitle: "Containerized notes app on AWS"
 category: "devops"
 technologies: ["Docker", "Docker Compose", "Node.js", "MongoDB", "Nginx", "Terraform", "Ansible", "Jenkins", "GitHub Actions", "AWS EC2"]
+diagram:
+  src: "/assets/projects/containerized-notes-app.svg"
+  alt: "Containerized notes app diagram: a code change moves from GitHub through Jenkins to Docker Hub, then to an EC2 instance running Nginx, a Node.js notes app and MongoDB in Docker Compose, with Terraform provisioning EC2 and Ansible configuring Docker."
+  width: 2000
+  height: 1000
 ---
 
 ## Context

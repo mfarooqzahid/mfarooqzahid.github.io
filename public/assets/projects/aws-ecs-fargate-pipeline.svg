@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 880" width="2000" height="880">
+<title>CI/CD pipeline to ECS Fargate</title>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b96a5"/>
+  </marker>
+</defs>
+<rect width="2000" height="880" fill="#ffffff"/>
+<text x="90" y="82" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#12161c">CI/CD pipeline to ECS Fargate</text>
+<text x="90" y="124" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">A code change moves from commit to a running service with no manual steps.</text>
+<rect x="100" y="230" width="280" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="126" y="278" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Developer</text><text x="126" y="312" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">pushes code</text>
+<rect x="430" y="230" width="280" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="456" y="278" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">GitHub</text><text x="456" y="312" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">source of truth</text>
+<rect x="760" y="230" width="300" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="786" y="278" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Jenkins</text><text x="786" y="312" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">builds the Docker image</text>
+<rect x="1110" y="230" width="300" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="1136" y="278" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Amazon ECR</text><text x="1136" y="312" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">stores the image</text>
+<rect x="1460" y="230" width="440" height="150" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="1486" y="278" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">ECS Fargate</text><text x="1486" y="312" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">runs the service</text>
+<line x1="380" y1="305" x2="430" y2="305" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="710" y1="305" x2="760" y2="305" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1060" y1="305" x2="1110" y2="305" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1410" y1="305" x2="1460" y2="305" stroke="#8b96a5" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="760" y="600" width="1140" height="160" fill="#ffffff" stroke="#d3d9e1" stroke-width="2"/><text x="786" y="648" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#12161c">Terraform</text><text x="786" y="682" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#3f4a5a">provisions the ECR repository, ECS cluster, task definition and service</text>
+<line x1="1260" y1="600" x2="1260" y2="376" stroke="#8b96a5" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+<line x1="1680" y1="600" x2="1680" y2="376" stroke="#8b96a5" stroke-width="2" stroke-dasharray="8 7" marker-end="url(#arrow)"/>
+<text x="1290" y="490" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#566273">provisions</text>
+<text x="100" y="650" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">Each deploy registers a new task definition revision,</text>
+<text x="100" y="682" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#566273">then the ECS service rolls it out.</text>
+</svg>

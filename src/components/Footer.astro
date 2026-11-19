@@ -4,7 +4,7 @@ import { site } from "../data/site";
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>{site.name}</p>
+    <a class="footer-name" href="/">{site.name}</a>
   </div>
 </footer>
 
@@ -15,9 +15,14 @@ import { site } from "../data/site";
     padding-block: 24px 36px;
   }
 
-  .site-footer p {
+  .footer-name {
     color: var(--color-muted);
     font-size: 14px;
+    font-weight: 400;
     line-height: 1.6;
+  }
+
+  .footer-name:hover {
+    color: var(--color-ink);
   }
 </style>

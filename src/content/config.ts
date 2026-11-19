@@ -24,28 +24,17 @@ const project = defineCollection({
   }),
 });
 
-// Standalone pages listed under the silent /pages route.
-const custom = defineCollection({
+// Content collections for project case studies and writing.
+const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    tagline: z.string().optional(),
-    icon: z.string().optional(),
-    hero: z.string().optional(),
-    links: z
-      .array(
-        z.object({
-          label: z.string(),
-          url: z.string(),
-          icon: z.string().optional(),
-        })
-      )
-      .optional(),
-    screenshots: z.array(z.string()).optional(),
+    author: z.string(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 
 export const collections = {
   project,
-  custom,
+  blog,
 };

@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layout/Layout.astro";
+
+const posts = (await getCollection("blog")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title)
+);
+
+const site = Astro.site ?? new URL("https://mfarooqzahid.github.io");
+const homeUrl = new URL("/", site).href;
+const pageUrl = new URL("/blog/", site).href;
+const description = "Notes on cloud infrastructure, delivery and software.";
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Writing",
+  url: pageUrl,
+  description,
+  isPartOf: { "@id": `${homeUrl}#website` },
+};
+---
+
+<Layout title="Writing" description={description} jsonLd={blogJsonLd}>
+  <section class="wrap page">
+    <h1 class="page-title">Writing</h1>
+    <p class="page-intro">
+      Notes on cloud infrastructure, delivery and software.
+    </p>
+
+    <ul class="post-list">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.slug}/`}>
+              <span class="post-list-title">{post.data.title}</span>
+              <span class="post-list-desc">{post.data.description}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .post-list {
+    margin-top: 32px;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .post-list li {
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .post-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-block: 20px;
+  }
+
+  .post-list-title {
+    color: var(--color-ink);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: color 0.15s ease;
+  }
+
+  .post-list a:hover .post-list-title {
+    color: var(--color-accent);
+  }
+
+  .post-list-desc {
+    max-width: 70ch;
+    color: var(--color-muted);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+</style>

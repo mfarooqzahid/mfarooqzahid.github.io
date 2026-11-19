@@ -3,6 +3,11 @@ title: "Minions: CI/CD Pipeline to ECS Fargate"
 description: "A Jenkins pipeline that builds a Docker image, pushes it to Amazon ECR, and deploys it to ECS Fargate — with the infrastructure defined in Terraform."
 category: "devops"
 technologies: ["Terraform", "Jenkins", "Docker", "Amazon ECR", "Amazon ECS Fargate"]
+diagram:
+  src: "/assets/projects/aws-ecs-fargate-pipeline.svg"
+  alt: "CI/CD pipeline diagram: a code change moves from GitHub through Jenkins to Amazon ECR and an ECS Fargate service, with Terraform provisioning the registry, cluster, task definition and service."
+  width: 2000
+  height: 880
 ---
 
 ## Context

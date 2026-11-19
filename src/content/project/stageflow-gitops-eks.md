@@ -3,6 +3,11 @@ title: "Stageflow: GitOps on Amazon EKS"
 description: "A multi-environment GitOps workflow on EKS, with Helm charts, ArgoCD sync, and GitHub Actions across dev, uat, and preprod."
 category: "devops"
 technologies: ["Amazon EKS", "ArgoCD", "Helm", "eksctl", "AWS CDK", "GitHub Actions", "Kubernetes", "AWS"]
+diagram:
+  src: "/assets/projects/stageflow-gitops-eks.svg"
+  alt: "GitOps diagram: a developer pushes to GitHub, GitHub Actions runs CI, ArgoCD syncs dev, uat and preprod on an EKS cluster in ap-southeast-2, with AWS CDK and eksctl, a public ELB and a bastion host supporting the cluster."
+  width: 2000
+  height: 1000
 ---
 
 ## Context

@@ -3,6 +3,11 @@ title: "WireGuard VPN Server on AWS with Terraform"
 description: "A private WireGuard VPN on EC2, provisioned entirely with reusable Terraform modules, remote state, and no open SSH port."
 category: "devops"
 technologies: ["AWS", "Terraform", "WireGuard", "EC2", "IAM", "SSM", "S3", "Linux", "Bash", "Python"]
+diagram:
+  src: "/assets/projects/wireguard-vpn-aws.svg"
+  alt: "WireGuard VPN diagram: a client connects through an Elastic IP to an EC2 WireGuard server in a VPC, with IAM and SSM access, Terraform modules for network, security and the VPN instance, S3 remote state, and client automation scripts."
+  width: 2000
+  height: 1100
 ---
 
 ## Context

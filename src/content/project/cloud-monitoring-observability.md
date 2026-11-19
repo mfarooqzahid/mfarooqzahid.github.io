@@ -4,6 +4,11 @@ description: "The main monitoring tools set up side by side: CloudWatch, Prometh
 seoDescription: "A side-by-side monitoring and observability stack with CloudWatch, Prometheus, Grafana, and the ELK stack."
 category: "devops"
 technologies: ["CloudWatch", "Prometheus", "Node Exporter", "Grafana", "Elasticsearch", "Kibana", "Filebeat", "Elastic Agent"]
+diagram:
+  src: "/assets/projects/observability-stack.svg"
+  alt: "Monitoring diagram: an EC2 host sends metrics and logs to CloudWatch, Prometheus and Grafana for metrics, and Filebeat, Elasticsearch and Kibana for logs."
+  width: 2000
+  height: 900
 ---
 
 ## Context

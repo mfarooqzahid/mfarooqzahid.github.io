@@ -1,0 +1,86 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layout/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: CollectionEntry<"blog"> };
+const { Content } = await post.render();
+
+const site = Astro.site ?? new URL("https://mfarooqzahid.github.io");
+const pageUrl = new URL(`/blog/${post.slug}/`, site).href;
+const description = post.data.description;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description,
+  author: {
+    "@type": "Person",
+    name: post.data.author,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Farooq Zahid",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": pageUrl,
+  },
+  url: pageUrl,
+  inLanguage: "en",
+};
+---
+
+<Layout
+  title={post.data.title}
+  description={description}
+  type="article"
+  jsonLd={articleJsonLd}
+>
+  <article class="wrap page">
+    <a class="back-link" href="/blog/">All writing</a>
+
+    <header class="post-head">
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-byline">By {post.data.author}</p>
+    </header>
+
+    <div class="prose post-body">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-head {
+    margin-top: 16px;
+  }
+
+  .post-title {
+    max-width: 30ch;
+    font-size: clamp(30px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  .post-byline {
+    margin-top: 12px;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .post-body {
+    margin-top: 40px;
+  }
+</style>

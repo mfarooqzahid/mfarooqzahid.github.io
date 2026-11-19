@@ -32,7 +32,10 @@
 
   body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: #f4f6f9;
     color: var(--color-ink);
     font-family: var(--font-sans);
@@ -41,6 +44,10 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  main {
+    flex: 1 0 auto;
   }
 
   h1,
