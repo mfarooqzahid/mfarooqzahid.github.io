@@ -281,4 +281,14 @@
   .prose.prose :where(pre) {
     border: 1px solid var(--color-rule);
   }
+
+  /* Full-width, justified article body. */
+  .prose.prose.prose-wide {
+    max-width: none;
+  }
+
+  .prose-wide :where(p, li) {
+    text-align: justify;
+    hyphens: auto;
+  }
 }

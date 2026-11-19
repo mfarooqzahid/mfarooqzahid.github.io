@@ -53,7 +53,7 @@ const articleJsonLd = {
       <p class="post-byline">By {post.data.author}</p>
     </header>
 
-    <div class="prose post-body">
+    <div class="prose post-body prose-wide">
       <Content />
     </div>
   </article>
@@ -65,7 +65,6 @@ const articleJsonLd = {
   }
 
   .post-title {
-    max-width: 30ch;
     font-size: clamp(30px, 4vw, 42px);
     font-weight: 700;
     letter-spacing: -0.02em;
