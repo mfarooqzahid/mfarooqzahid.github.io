@@ -1,244 +1,277 @@
-@import url('https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Baloo+2:wght@700;800&display=swap');
-
+@import "@fontsource-variable/manrope";
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
 /* ---------------------------------------------------------------
-   Craft Storybook design tokens
+   Design tokens
 --------------------------------------------------------------- */
 @theme {
-  --color-craft-cream: #fdf4e2;
-  --color-craft-cream-2: #f2e2c4;
-  --color-craft-paper: #fffdf7;
-  --color-craft-paper-2: #fffaf0;
-  --color-craft-ink: #2c3a4b;
-  --color-craft-body: #3a2e22;
-  --color-craft-muted: #6f5d4b;
-  --color-craft-tan: #bcd2e3;
-  --color-craft-tan-2: #9dc0d8;
-  --color-craft-line: #dbe8f2;
-  --color-craft-accent: #1f6d99;
-  --color-craft-accent-dark: #2f7fb0;
-  --color-craft-teal: #2fa79b;
-  --color-craft-teal-dark: #1f7d74;
-  --color-craft-gold: #e9b23c;
-  --color-craft-felt: #7fbf9b;
-  --color-craft-hill: #b9dcc8;
+  --color-bg: #f4f6f9;
+  --color-panel: #ffffff;
+  --color-ink: #12161c;
+  --color-muted: #566273;
+  --color-rule: #d3d9e1;
+  --color-accent: #1d4ed8;
 
-  --font-display: "Chewy", system-ui, cursive;
-  --font-hand: "Patrick Hand", system-ui, sans-serif;
-  --font-label: "Baloo 2", system-ui, sans-serif;
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
+
+  --radius-none: 0px;
 }
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
   html {
-    scrollbar-width: none;
+    background-color: #f4f6f9;
     scroll-behavior: smooth;
-    font-size: 18px;
+    scroll-padding-top: 72px;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
+    margin: 0;
     min-height: 100vh;
-    font-family: "Patrick Hand", system-ui, sans-serif;
-    color: #3a2e22;
-    background:
-      radial-gradient(#2f7fb014 1.1px, transparent 1.2px) 0 0 / 6px 6px,
-      linear-gradient(180deg, #eef7fe, #d8eaf9);
-    background-attachment: fixed;
+    background-color: #f4f6f9;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
   h2,
   h3,
-  h4 {
-    font-family: "Chewy", system-ui, cursive;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-    color: #2c3a4b;
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    color: var(--color-ink);
+    font-weight: 600;
+    line-height: 1.2;
   }
 
-  ::-webkit-scrollbar {
-    display: none;
+  p {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  *,
+  *::before,
+  *::after {
+    border-radius: 0;
   }
 
   ::selection {
-    background-color: #5aa9e655;
-    color: #2c3a4b;
+    background-color: #1d4ed833;
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
 @layer components {
-  /* --- paper card -------------------------------------------------- */
-  .craft-card {
-    position: relative;
-    background: #fffdf7;
-    border-radius: 16px;
-    box-shadow: 0 6px 0 #bcd2e3, 0 14px 26px #5c86a326;
+  .wrap {
+    width: 100%;
+    max-width: 1040px;
+    margin-inline: auto;
+    padding-inline: 24px;
   }
 
-  .craft-card--outline {
-    background: #fffaf0;
-    border: 2px solid #bcd2e3;
-    box-shadow: 0 5px 0 #bcd2e3;
+  .section {
+    padding-top: 56px;
   }
 
-  /* --- washi tape -------------------------------------------------- */
-  .tape {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    width: 72px;
-    height: 20px;
-    transform: translateX(-50%) rotate(-4deg);
-    background: #e9cf8fcc;
-    border-left: 1px dashed #c9a95a;
-    border-right: 1px dashed #c9a95a;
-    pointer-events: none;
-  }
-  .tape--left {
-    left: 26px;
-    transform: rotate(-6deg);
-  }
-  .tape--right {
-    left: auto;
-    right: 26px;
-    transform: rotate(5deg);
+  .section-title {
+    margin-bottom: 16px;
+    color: var(--color-muted);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.6;
   }
 
-  /* --- felt badge / stitched circle -------------------------------- */
-  .felt-badge {
-    position: relative;
-    display: grid;
-    place-items: center;
-    border-radius: 999px;
-    background: #fffaf0;
-    box-shadow: 0 0 0 3px #bcd2e3, 0 6px 12px #5c86a333, inset 0 -4px 0 #e8f1f8;
-  }
-  .felt-badge::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    border-radius: 999px;
-    border: 2px dashed #0000001c;
-    pointer-events: none;
-  }
-  .felt-badge--teal {
-    box-shadow: 0 0 0 3px #2fa79b, 0 6px 12px #2fa79b33, inset 0 -4px 0 #e8f1f8;
-  }
-  .felt-badge--accent {
-    box-shadow: 0 0 0 3px #5aa9e6, 0 6px 12px #5aa9e633, inset 0 -4px 0 #e8f1f8;
-  }
-  .felt-badge--gold {
-    box-shadow: 0 0 0 3px #e9b23c, 0 6px 12px #e9b23c33, inset 0 -4px 0 #e8f1f8;
+  .panel {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-rule);
   }
 
-  /* --- buttons ----------------------------------------------------- */
-  .craft-btn {
+  .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.5rem;
-    border: 0;
-    border-radius: 14px;
-    font-family: "Chewy", system-ui, cursive;
-    font-size: 1.05rem;
-    line-height: 1;
-    letter-spacing: 0.5px;
-    color: #fff;
-    background: #1f6d99;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+    color: var(--color-ink);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: center;
     cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 5px 0 #14506f, 0 10px 18px #1f6d9940;
-    outline: 3px dashed #fff8ea;
-    outline-offset: -8px;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-  }
-  .craft-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 0 #14506f, 0 12px 20px #1f6d9955;
-  }
-  .craft-btn:active {
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 #14506f;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
 
-  .craft-btn--teal {
-    background: #1f7d74;
-    box-shadow: 0 5px 0 #145a53, 0 10px 18px #1f7d7440;
-  }
-  .craft-btn--teal:hover {
-    box-shadow: 0 7px 0 #145a53, 0 12px 20px #1f7d7455;
-  }
-  .craft-btn--teal:active {
-    box-shadow: 0 2px 0 #145a53;
+  .btn:hover {
+    border-color: var(--color-accent);
   }
 
-  .craft-btn--paper {
-    color: #1f7d74;
-    background: #fffdf7;
-    border: 2px solid #9dc0d8;
-    box-shadow: 0 6px 0 #9dc0d8, 0 12px 20px #5c86a33d;
-    outline: none;
-  }
-  .craft-btn--paper:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 0 #9dc0d8, 0 14px 22px #5c86a34d;
-  }
-  .craft-btn--paper:active {
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 #9dc0d8;
+  .btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #ffffff;
   }
 
-  /* --- chips / pills ----------------------------------------------- */
-  .craft-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.35rem 0.8rem;
-    border-radius: 999px;
-    background: #f6ecd8;
-    color: #6f5d4b;
-    font-family: "Baloo 2", system-ui, sans-serif;
-    font-size: 0.82rem;
+  .btn-primary:hover {
+    background-color: #2a5ce8;
+    border-color: #2a5ce8;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 100;
+    padding: 8px 14px;
+    background-color: var(--color-accent);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  .page {
+    padding-top: 56px;
+  }
+
+  .page-title {
+    font-size: clamp(30px, 4vw, 40px);
     font-weight: 700;
-    letter-spacing: 0.04em;
-    box-shadow: inset 0 0 0 2px #fff;
-  }
-  .craft-chip--teal {
-    background: #eaf6f2;
-    color: #1b7068;
-  }
-  .craft-chip--accent {
-    background: #e6f2fb;
-    color: #27678f;
-  }
-  .craft-chip--gold {
-    background: #fbf1d6;
-    color: #a37c17;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 
-  /* --- eyebrow label ----------------------------------------------- */
-  .craft-eyebrow {
-    font-family: "Baloo 2", system-ui, sans-serif;
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #1f7d74;
+  .page-intro {
+    margin-top: 16px;
+    max-width: 58ch;
+    color: var(--color-muted);
+    font-size: 17px;
+    line-height: 1.6;
   }
 
-  /* --- stitched divider -------------------------------------------- */
-  .stitch-rule {
-    border: 0;
-    height: 2px;
-    background: repeating-linear-gradient(90deg, #bcd2e3 0 6px, transparent 6px 13px);
+  .page-groups {
+    margin-top: 48px;
   }
 
-  /* --- emoji helper ------------------------------------------------ */
-  .emoji {
-    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
-    line-height: 1;
+  .project-group + .project-group {
+    margin-top: 48px;
+  }
+
+  .back-link {
     display: inline-block;
+    color: var(--color-muted);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .back-link:hover {
+    color: var(--color-ink);
+  }
+
+  .back-link + .page-title {
+    margin-top: 16px;
+  }
+}
+
+@layer utilities {
+  /* Markdown prose, tuned to the light token palette. The doubled class keeps
+     these tokens ahead of the Typography plugin defaults regardless of order. */
+  .prose.prose {
+    --tw-prose-body: #2e3744;
+    --tw-prose-headings: var(--color-ink);
+    --tw-prose-lead: var(--color-muted);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-ink);
+    --tw-prose-counters: var(--color-muted);
+    --tw-prose-bullets: var(--color-accent);
+    --tw-prose-hr: var(--color-rule);
+    --tw-prose-quotes: var(--color-ink);
+    --tw-prose-quote-borders: var(--color-rule);
+    --tw-prose-captions: var(--color-muted);
+    --tw-prose-code: var(--color-ink);
+    --tw-prose-pre-code: var(--color-ink);
+    --tw-prose-pre-bg: var(--color-bg);
+    --tw-prose-th-borders: var(--color-rule);
+    --tw-prose-td-borders: var(--color-rule);
+    max-width: 68ch;
+    color: var(--tw-prose-body);
+  }
+
+  .prose.prose :where(a) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose.prose :where(h1, h2, h3, h4) {
+    letter-spacing: -0.01em;
+  }
+
+  .prose.prose :where(code)::before,
+  .prose.prose :where(code)::after {
+    content: none;
+  }
+
+  .prose.prose :where(pre) {
+    border: 1px solid var(--color-rule);
   }
 }

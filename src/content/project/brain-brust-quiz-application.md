@@ -22,23 +22,23 @@ screenshots:
 
 ## **Key Features**  
 
-### 🔐 **Authentication**  
+### **Authentication**  
 - **Email & Password Login/Signup**  
 - **Google Authentication for Quick Access**  
 
-### 🏆 **Leaderboard & User Progress**  
+### **Leaderboard & User Progress**  
 - Tracks **user scores & ranking** in real-time  
 - Displays **top performers** in different categories  
 
-### 📚 **Explore & Take Quizzes**  
+### **Explore & Take Quizzes**  
 - Access quizzes **contributed by the community**  
 - **Take exams** to test your knowledge  
 
-### ✏️ **Contribute & Manage Quizzes**  
+### **Contribute & Manage Quizzes**  
 - Users can **create, edit, and publish** quizzes  
 - **Admin moderation** ensures quality content  
 
-### 📊 **Performance Insights**  
+### **Performance Insights**  
 - Track your **quiz history & improvement over time**  
 - Personalized **recommendations** for learning  
 

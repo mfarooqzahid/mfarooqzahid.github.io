@@ -2,10 +2,15 @@
 import { getCollection } from "astro:content";
 import Layout from "../layout/Layout.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
+import { toProjectCard } from "../utils/project-cards";
 
 const projects = await getCollection("project");
-const devopsProjects = projects.filter((project) => project.data.category === "devops");
-const flutterProjects = projects.filter((project) => project.data.category === "flutter");
+const devopsProjects = projects
+  .filter((project) => project.data.category === "devops")
+  .map(toProjectCard);
+const mobileProjects = projects
+  .filter((project) => project.data.category === "flutter")
+  .map(toProjectCard);
 
 const site = Astro.site ?? new URL("https://mfarooqzahid.github.io");
 const homeUrl = new URL("/", site).href;
@@ -20,7 +25,7 @@ const projectsJsonLd = {
       "@type": "CollectionPage",
       "@id": pageUrl,
       url: pageUrl,
-      name: "DevOps & Flutter Projects — Farooq Zahid",
+      name: "DevOps and Flutter Projects by Farooq Zahid",
       description,
       isPartOf: { "@id": `${homeUrl}#website` },
     },
@@ -40,54 +45,27 @@ const projectsJsonLd = {
   description={description}
   jsonLd={projectsJsonLd}
 >
-  <section class="mx-auto px-5 pt-12 pb-24">
-    <div class="mx-auto w-full max-w-6xl">
-      <a href="/" class="craft-chip craft-chip--teal mb-6 hover:underline">
-        <span class="emoji">←</span> Home
-      </a>
-      <div class="craft-card relative mb-12 px-6 py-8 sm:px-10">
-        <span class="tape tape--left"></span>
-        <div
-          class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between"
-        >
-          <div>
-            <p class="craft-eyebrow">Projects</p>
-            <h1 class="mt-2 text-3xl sm:text-4xl">Things I've built &amp; shipped</h1>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <a
-              href="/projects/flutter/"
-              class="craft-btn craft-btn--paper !py-2.5 !px-5 text-base"
-            >
-              <span class="emoji">📱</span> Flutter
-            </a>
-            <a
-              href="/projects/devops/"
-              class="craft-btn craft-btn--paper !py-2.5 !px-5 text-base"
-            >
-              <span class="emoji">⚙️</span> DevOps
-            </a>
-          </div>
+  <section class="wrap page">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-intro">
+      Case studies from cloud infrastructure and mobile app work. Each one lists
+      what was built and the tools used.
+    </p>
+
+    <div class="page-groups">
+      <section class="project-group" aria-labelledby="devops-heading">
+        <h2 id="devops-heading" class="section-title">DevOps</h2>
+        <div class="section-body">
+          <ProjectGrid projects={devopsProjects} />
         </div>
-      </div>
+      </section>
 
-      <div class="space-y-14">
-        <section>
-          <h2 class="mb-6 text-2xl sm:text-3xl">
-            <span class="emoji">📱</span> Flutter Projects
-          </h2>
-          <ProjectGrid projects={flutterProjects} variant="flutter" />
-        </section>
-
-        <hr class="stitch-rule" />
-
-        <section>
-          <h2 class="mb-6 text-2xl sm:text-3xl">
-            <span class="emoji">⚙️</span> DevOps Projects
-          </h2>
-          <ProjectGrid projects={devopsProjects} variant="devops" />
-        </section>
-      </div>
+      <section class="project-group" aria-labelledby="mobile-heading">
+        <h2 id="mobile-heading" class="section-title">Mobile</h2>
+        <div class="section-body">
+          <ProjectGrid projects={mobileProjects} />
+        </div>
+      </section>
     </div>
   </section>
 </Layout>

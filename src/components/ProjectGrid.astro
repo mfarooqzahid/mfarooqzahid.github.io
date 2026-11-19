@@ -1,35 +1,36 @@
 ---
-import ProjectCover from "./ProjectCover.astro";
+import type { Project } from "../data/projects";
+import ProjectCard from "./ProjectCard.astro";
 
-const { projects, variant = "flutter" } = Astro.props;
-const isDevops = variant === "devops";
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+const remainder = projects.length % 3;
+
+const spanClass = (index: number) => {
+  if (remainder === 0) return "";
+  const firstOfLastRow = projects.length - remainder;
+  if (index < firstOfLastRow) return "";
+  return remainder === 2 ? "span-half" : "span-full";
+};
 ---
 
-<div class="grid grid-cols-1 justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
-  {projects.map((project) => (
-    <a
-      href={`/projects/${project.slug}/`}
-      class="craft-card group relative block p-4 transition-transform duration-150 hover:-translate-y-1"
-    >
-      <span class="tape"></span>
-
-      <ProjectCover project={project} class="mb-4" />
-
-      <h3 class="text-xl leading-snug">{project.data.title}</h3>
-      <p class="mt-1 mb-4 text-craft-muted">{project.data.description}</p>
-
-      <div class="flex flex-wrap gap-2">
-        {project.data.technologies.map((tech) => (
-          <span
-            class:list={[
-              "craft-chip",
-              isDevops ? "craft-chip--teal" : "craft-chip--accent",
-            ]}
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-    </a>
-  ))}
+<div class="project-grid">
+  {
+    projects.map((project, index) => (
+      <ProjectCard project={project} class={spanClass(index)} />
+    ))
+  }
 </div>
+
+<style>
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1px;
+    background-color: var(--color-rule);
+    border: 1px solid var(--color-rule);
+  }
+</style>

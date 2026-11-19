@@ -32,38 +32,73 @@ const pages = [...markdownPages, ...htmlPages].sort((a, b) =>
 ---
 
 <Layout title="Pages" noindex>
-  <main
-    class="mx-auto w-full max-w-3xl px-6 pt-10 pb-24 font-mono text-sm text-craft-body"
-  >
-    <h1 class="font-mono text-lg font-bold text-craft-ink">/pages</h1>
-    <p class="mt-2 text-craft-muted">
+  <section class="wrap page">
+    <h1 class="page-title">/pages</h1>
+    <p class="page-intro">
       Standalone pages that live outside the main site. Not linked from
-      anywhere — reachable by URL only.
+      anywhere, reachable by URL only.
     </p>
-
-    <hr class="my-7 border-t-2 border-dashed border-craft-tan" />
 
     {
       pages.length === 0 ? (
-        <p class="text-craft-muted">No custom pages yet.</p>
+        <p class="pages-empty">No custom pages yet.</p>
       ) : (
-        <ul class="space-y-6">
+        <ul class="pages-list">
           {pages.map((page) => (
             <li>
-              <a
-                href={page.href}
-                class="font-bold text-craft-accent underline decoration-dashed underline-offset-4 hover:no-underline"
-              >
-                {page.href}
-              </a>
-              <p class="mt-1">
-                <span class="text-craft-ink">{page.title}</span>
-                <span class="text-craft-muted"> — {page.description}</span>
+              <a href={page.href}>{page.href}</a>
+              <p>
+                <span class="pages-title">{page.title}</span>
+                <span class="pages-description">{page.description}</span>
               </p>
             </li>
           ))}
         </ul>
       )
     }
-  </main>
+  </section>
 </Layout>
+
+<style>
+  .pages-list {
+    margin-top: 32px;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .pages-list li {
+    padding-block: 18px;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .pages-list a {
+    color: var(--color-accent);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .pages-list a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .pages-list p {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .pages-title {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .pages-description {
+    color: var(--color-muted);
+  }
+
+  .pages-empty {
+    margin-top: 32px;
+    color: var(--color-muted);
+    font-size: 15px;
+  }
+</style>

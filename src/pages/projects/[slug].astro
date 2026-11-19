@@ -1,8 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layout/Layout.astro";
-import ProjectCover from "../../components/ProjectCover.astro";
-import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("project");
@@ -27,6 +25,7 @@ const canonical = new URL(pathname, site).href;
 const seoTitle = project.data.seoTitle ?? project.data.title;
 const description = project.data.seoDescription ?? project.data.description;
 const image = project.data.image ?? "/assets/home-preview.png";
+const typeLabel = project.data.category === "flutter" ? "Mobile" : "DevOps";
 
 const webPageJsonLd = {
   "@context": "https://schema.org",
@@ -104,105 +103,114 @@ const videoEmbed = video
   type="article"
   jsonLd={jsonLd}
 >
-  <article class="mx-auto px-5 pt-12 pb-24">
-    <div class="mx-auto w-full max-w-4xl">
-      <a
-        href="/projects/"
-        class="craft-chip craft-chip--teal mb-6 hover:underline"
-      >
-        <span class="emoji">←</span> All projects
-      </a>
+  <article class="wrap page">
+    <a class="back-link" href="/projects/">All projects</a>
 
-      <header class="craft-card relative mb-8 px-6 py-8 sm:px-9">
-        <span class="tape tape--left"></span>
-        <h1 class="text-3xl sm:text-4xl">{project.data.title}</h1>
-        <div class="mt-4 flex flex-wrap gap-2">
-          {project.data.technologies.map((tech) => (
-            <span class="craft-chip craft-chip--accent">{tech}</span>
-          ))}
-        </div>
+    <header class="article-head">
+      <div class="article-labels">
+        <p class="section-title">{typeLabel}</p>
         {
-          project.data.storeUrl && (
-            <a
-              href={project.data.storeUrl}
-              target="_blank"
-              rel="noreferrer"
-              class="craft-btn craft-btn--teal mt-5 w-fit !px-5 !py-2.5 text-base"
-            >
-              <span class="emoji">▶️</span> Get it on Google Play
-            </a>
+          project.data.status && (
+            <span class="article-status">{project.data.status}</span>
           )
         }
-      </header>
-
-      <ProjectCover project={project} variant="hero" class="mb-8" />
-
-      {
-        videoEmbed && (
-          <div class="mb-8">
-            <h2 class="mb-4 text-2xl">
-              <span class="emoji">▶️</span> Video
-            </h2>
-            <div class="aspect-video overflow-hidden rounded-2xl border-2 border-craft-tan bg-craft-ink shadow-[0_6px_0_#bcd2e3,0_14px_26px_#5c86a326]">
-              <iframe
-                src={videoEmbed}
-                title={`${project.data.title} video`}
-                class="h-full w-full"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              />
-            </div>
-          </div>
-        )
-      }
-
-      <div class="craft-card px-6 py-8 sm:px-9">
-        <Prose>
-          <Content />
-        </Prose>
       </div>
-
+      <h1 class="article-title">{project.data.title}</h1>
+      <p class="article-stack">{project.data.technologies.join(", ")}</p>
       {
-        screenshots.length > 0 && (
-          <div class="mt-12">
-            <h2 class="mb-6 text-2xl">
-              <span class="emoji">📸</span> Screenshots
-            </h2>
-            <div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
-              {screenshots.map((screenshot, i) => (
-                <button
-                  type="button"
-                  data-shot-index={i}
-                  aria-label={`Open screenshot ${i + 1} of ${screenshots.length}`}
-                  class="shot group block cursor-zoom-in overflow-hidden rounded-xl border-2 border-craft-tan bg-craft-paper-2 p-0 shadow-[0_5px_0_#bcd2e3] transition-transform duration-150 hover:-translate-y-1"
-                  style={`transform: rotate(${i % 2 === 0 ? -1 : 1}deg)`}
-                >
-                  <img
-                    src={screenshot}
-                    alt={`${project.data.title} screenshot ${i + 1}`}
-                    class="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                    draggable="false"
-                  />
-                </button>
-              ))}
-            </div>
-            <p class="mt-4 text-center text-sm text-craft-muted">
-              Tap a screenshot to open the slider
-            </p>
-          </div>
+        project.data.storeUrl && (
+          <a
+            href={project.data.storeUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="btn btn-primary article-store"
+          >
+            Get it on Google Play
+          </a>
         )
       }
+    </header>
+
+    {
+      project.data.diagram && (
+        <figure class="article-diagram">
+          <img
+            src={project.data.diagram.src}
+            alt={project.data.diagram.alt}
+            width={project.data.diagram.width}
+            height={project.data.diagram.height}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <a
+              href={project.data.diagram.src}
+              target="_blank"
+              rel="noreferrer">Open diagram full size</a
+            >
+          </figcaption>
+        </figure>
+      )
+    }
+
+    {
+      videoEmbed && (
+        <section class="article-section" aria-labelledby="video-heading">
+          <h2 id="video-heading" class="section-title">
+            Video
+          </h2>
+          <div class="video-frame">
+            <iframe
+              src={videoEmbed}
+              title={`${project.data.title} video`}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            />
+          </div>
+        </section>
+      )
+    }
+
+    <div class="article-body prose">
+      <Content />
     </div>
+
+    {
+      screenshots.length > 0 && (
+        <section class="article-section" aria-labelledby="screenshots-heading">
+          <h2 id="screenshots-heading" class="section-title">
+            Screenshots
+          </h2>
+          <div class="shot-grid">
+            {screenshots.map((screenshot, i) => (
+              <button
+                type="button"
+                data-shot-index={i}
+                aria-label={`Open screenshot ${i + 1} of ${screenshots.length}`}
+                class="shot"
+              >
+                <img
+                  src={screenshot}
+                  alt={`${project.data.title} screenshot ${i + 1}`}
+                  width="240"
+                  height="427"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            ))}
+          </div>
+        </section>
+      )
+    }
   </article>
 
   {
     screenshots.length > 0 && (
       <div id="lightbox" class="lightbox" hidden>
         <button id="lb-close" class="lb-btn lb-close" aria-label="Close">
-          ✕
+          ×
         </button>
         <button id="lb-prev" class="lb-btn lb-prev" aria-label="Previous">
           ‹
@@ -217,9 +225,10 @@ const videoEmbed = video
               <img
                 src={screenshot}
                 alt={`${project.data.title} screenshot ${i + 1}`}
+                width="720"
+                height="1280"
                 loading="lazy"
                 decoding="async"
-                draggable="false"
               />
             </div>
           ))}
@@ -234,15 +243,146 @@ const videoEmbed = video
 </Layout>
 
 <style>
+  .article-head {
+    margin-top: 16px;
+  }
+
+  .article-labels {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .article-labels .section-title {
+    margin-bottom: 0;
+  }
+
+  .article-status {
+    color: var(--color-accent);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .article-title {
+    margin-top: 8px;
+    max-width: 24ch;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  .article-stack {
+    margin-top: 12px;
+    max-width: 62ch;
+    color: var(--color-accent);
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  .article-store {
+    margin-top: 20px;
+  }
+
+  .article-diagram {
+    margin: 32px 0 0;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+  }
+
+  .article-diagram img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .article-diagram figcaption {
+    padding: 8px 12px;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .article-diagram figcaption a {
+    color: var(--color-muted);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-rule);
+    text-underline-offset: 3px;
+  }
+
+  .article-diagram figcaption a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+  }
+
+  .article-section {
+    margin-top: 40px;
+  }
+
+  .article-body {
+    margin-top: 40px;
+  }
+
+  .video-frame {
+    margin-top: 20px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+  }
+
+  .video-frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .shot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .shot {
+    padding: 0;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+    cursor: zoom-in;
+  }
+
+  .shot:hover {
+    border-color: var(--color-accent);
+  }
+
+  .shot img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+  }
+
+  @media (min-width: 640px) {
+    .shot-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
   .lightbox {
     position: fixed;
     inset: 0;
     z-index: 60;
-    background: rgba(18, 24, 32, 0.94);
+    background-color: #f4f6f9f2;
   }
+
   .lightbox[hidden] {
     display: none;
   }
+
   .lightbox-track {
     display: flex;
     width: 100%;
@@ -254,76 +394,79 @@ const videoEmbed = video
     scrollbar-width: none;
     overscroll-behavior: contain;
   }
+
   .lightbox-track::-webkit-scrollbar {
     display: none;
   }
+
   .lightbox-slide {
-    flex: 0 0 100%;
-    height: 100%;
-    scroll-snap-align: center;
     display: flex;
+    flex: 0 0 100%;
     align-items: center;
     justify-content: center;
-    padding: 3.5rem 1.25rem;
+    height: 100%;
+    padding: 56px 20px;
+    scroll-snap-align: center;
   }
+
   .lightbox-slide img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    border-radius: 14px;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-rule);
     user-select: none;
   }
+
   .lb-btn {
     position: absolute;
     z-index: 2;
-    border: 0;
-    cursor: pointer;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(4px);
-    border-radius: 999px;
-    width: 46px;
-    height: 46px;
-    font-size: 26px;
-    line-height: 1;
     display: grid;
     place-items: center;
-    transition: background 0.15s ease;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+    color: var(--color-ink);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
   }
+
   .lb-btn:hover {
-    background: rgba(255, 255, 255, 0.24);
+    border-color: var(--color-accent);
   }
+
   .lb-close {
-    top: 1rem;
-    right: 1rem;
+    top: 16px;
+    right: 16px;
     font-size: 20px;
   }
+
   .lb-prev {
-    left: 0.75rem;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
   }
+
   .lb-next {
-    right: 0.75rem;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
   }
+
   .lb-counter {
     position: absolute;
-    bottom: 1rem;
+    bottom: 16px;
     left: 50%;
-    transform: translateX(-50%);
     z-index: 2;
-    color: #fff;
-    font-family: "Baloo 2", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
-    background: rgba(255, 255, 255, 0.12);
-    padding: 0.3rem 0.8rem;
-    border-radius: 999px;
+    padding: 4px 12px;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+    color: var(--color-muted);
+    font-size: 13px;
+    transform: translateX(-50%);
   }
+
   @media (max-width: 640px) {
     .lb-prev,
     .lb-next {
@@ -382,7 +525,6 @@ const videoEmbed = video
       else if (e.key === "ArrowRight") step(1);
     });
 
-    // click on the dark backdrop (not the image) closes
     let dragged = false;
     track.addEventListener("click", (e) => {
       if (dragged) {
@@ -398,10 +540,9 @@ const videoEmbed = video
       }
     });
 
-    // desktop drag-to-scroll
-    let down = false,
-      startX = 0,
-      startScroll = 0;
+    let down = false;
+    let startX = 0;
+    let startScroll = 0;
     track.addEventListener("pointerdown", (e) => {
       if (e.pointerType !== "mouse") return;
       down = true;

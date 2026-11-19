@@ -1,0 +1,217 @@
+---
+import { hero, projectMenu } from "../data/site";
+import FactBox from "./FactBox.astro";
+---
+
+<section class="wrap hero">
+  <div class="hero-copy">
+    <h1>{hero.heading}</h1>
+    <p class="hero-intro">{hero.intro}</p>
+    <div class="hero-actions">
+      <a
+        id="projects-trigger"
+        class="btn btn-primary"
+        href={hero.primary.href}
+        aria-haspopup="dialog"
+        aria-controls="projects-dialog"
+      >
+        {hero.primary.label}
+      </a>
+      <a class="btn" href={hero.secondary.href}>{hero.secondary.label}</a>
+    </div>
+  </div>
+  <FactBox />
+</section>
+
+<dialog
+  id="projects-dialog"
+  class="project-dialog"
+  aria-labelledby="projects-dialog-title"
+>
+  <div class="project-dialog-head">
+    <h2 id="projects-dialog-title">Projects</h2>
+    <button
+      type="button"
+      class="project-dialog-close"
+      data-close
+      aria-label="Close">×</button
+    >
+  </div>
+  <nav aria-label="Projects">
+    <ul class="project-dialog-list">
+      {
+        projectMenu.map((item) => (
+          <li>
+            <a class="project-dialog-link" href={item.href}>
+              <span class="project-dialog-link-title">{item.label}</span>
+              <span class="project-dialog-link-desc">{item.description}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</dialog>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: end;
+    padding-block: 88px 64px;
+  }
+
+  .hero h1 {
+    margin-bottom: 20px;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  .hero-intro {
+    margin-bottom: 28px;
+    max-width: 54ch;
+    color: var(--color-muted);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .project-dialog {
+    width: min(calc(100% - 48px), 440px);
+    max-height: calc(100vh - 48px);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-rule);
+    box-shadow: none;
+    color: var(--color-ink);
+  }
+
+  .project-dialog::backdrop {
+    background-color: rgb(18 22 28 / 0.42);
+  }
+
+  .project-dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .project-dialog-head h2 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .project-dialog-close {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--color-rule);
+    background-color: var(--color-panel);
+    color: var(--color-ink);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .project-dialog-close:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .project-dialog-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-dialog-list li {
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .project-dialog-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .project-dialog-link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 24px;
+  }
+
+  .project-dialog-link:hover {
+    background-color: var(--color-bg);
+  }
+
+  .project-dialog-link-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: color 0.15s ease;
+  }
+
+  .project-dialog-link:hover .project-dialog-link-title {
+    color: var(--color-accent);
+  }
+
+  .project-dialog-link-desc {
+    color: var(--color-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 820px) {
+    .hero {
+      grid-template-columns: 1fr;
+      align-items: start;
+      padding-block: 56px 48px;
+    }
+  }
+</style>
+
+<script>
+  const trigger = document.querySelector<HTMLAnchorElement>("#projects-trigger");
+  const dialog = document.querySelector<HTMLDialogElement>("#projects-dialog");
+
+  if (trigger && dialog && typeof dialog.showModal === "function") {
+    const unlockScroll = () => {
+      document.documentElement.style.overflow = "";
+      document.documentElement.style.paddingRight = "";
+    };
+
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+      dialog.showModal();
+      document.documentElement.style.overflow = "hidden";
+      if (scrollbar > 0) {
+        document.documentElement.style.paddingRight = `${scrollbar}px`;
+      }
+    });
+
+    dialog.addEventListener("close", unlockScroll);
+
+    dialog.querySelector("[data-close]")?.addEventListener("click", () => {
+      dialog.close();
+    });
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  }
+</script>

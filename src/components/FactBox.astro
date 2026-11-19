@@ -1,0 +1,98 @@
+---
+import { facts, site } from "../data/site";
+---
+
+<aside class="fact-box panel" aria-label="Profile details">
+  <div class="fact-head">
+    <img
+      class="fact-photo"
+      src="/assets/photo-512.jpg"
+      width="112"
+      height="112"
+      alt="Farooq Zahid"
+      loading="eager"
+      decoding="async"
+    />
+    <div class="fact-identity">
+      <p class="fact-name">{site.name}</p>
+      <p class="fact-role">{site.role}</p>
+    </div>
+  </div>
+  <dl class="fact-list">
+    {
+      facts.map((fact) => (
+        <div class="fact-row">
+          <dt>{fact.label}</dt>
+          <dd class:list={{ "is-accent": fact.accent }}>{fact.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</aside>
+
+<style>
+  .fact-box {
+    padding: 20px;
+  }
+
+  .fact-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+
+  .fact-photo {
+    flex: none;
+    width: 112px;
+    height: 112px;
+    border: 1px solid var(--color-rule);
+    object-fit: cover;
+  }
+
+  .fact-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .fact-role {
+    margin-top: 2px;
+    color: var(--color-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .fact-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-block: 11px;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .fact-row:last-child {
+    border-bottom: 0;
+  }
+
+  .fact-row dt {
+    color: var(--color-muted);
+    font-size: 14.5px;
+    line-height: 1.4;
+  }
+
+  .fact-row dd {
+    margin: 0;
+    color: var(--color-ink);
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  .fact-row dd.is-accent {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+</style>

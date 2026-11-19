@@ -12,6 +12,15 @@ const project = defineCollection({
     video: z.string().optional(),
     screenshots: z.array(z.string()).optional(),
     storeUrl: z.string().url().optional(),
+    status: z.string().optional(),
+    diagram: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+        width: z.number(),
+        height: z.number(),
+      })
+      .optional(),
   }),
 });
 

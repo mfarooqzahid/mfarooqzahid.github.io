@@ -15,31 +15,25 @@ const { Content } = await page.render();
 ---
 
 <MinimalLayout title={page.data.title}>
-  <p class="not-prose mb-8 text-sm">
-    <a class="text-blue-600 underline" href="/pages/">← /pages</a>
+  <p class="not-prose back-row">
+    <a class="back-link" href="/pages/">/pages</a>
   </p>
 
-  <h1>
-    {page.data.icon && !page.data.icon.startsWith("http") && (
-      <span>{page.data.icon} </span>
-    )}
-    {page.data.title}
-  </h1>
+  <h1>{page.data.title}</h1>
 
   {page.data.tagline && <p>{page.data.tagline}</p>}
 
   {
     page.data.links && (
-      <ul class="not-prose m-0 flex list-none flex-wrap gap-3 p-0">
+      <ul class="not-prose link-row">
         {page.data.links.map((link) => (
-          <li class="m-0">
+          <li>
             <a
+              class="btn btn-secondary"
               href={link.url}
               target="_blank"
               rel="noreferrer"
-              class="inline-flex items-center gap-1 rounded-md border border-gray-300 px-3 py-1.5 text-sm font-medium text-gray-800 no-underline hover:bg-gray-50"
             >
-              {link.icon && !link.icon.startsWith("http") && `${link.icon} `}
               {link.label}
             </a>
           </li>
@@ -54,15 +48,53 @@ const { Content } = await page.render();
 
   {
     page.data.screenshots && (
-      <div class="not-prose mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <div class="not-prose shot-row">
         {page.data.screenshots.map((screenshot) => (
           <img
             src={screenshot}
             alt={`${page.data.title} screenshot`}
-            class="m-0 h-full w-full rounded-md border border-gray-200 object-cover"
+            width="240"
+            height="427"
+            loading="lazy"
+            decoding="async"
           />
         ))}
       </div>
     )
   }
 </MinimalLayout>
+
+<style>
+  .back-row {
+    margin-bottom: 24px;
+    font-size: 14px;
+  }
+
+  .link-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-block: 24px;
+  }
+
+  .shot-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .shot-row img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border: 1px solid var(--color-rule);
+    object-fit: cover;
+  }
+
+  @media (min-width: 640px) {
+    .shot-row {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,9 +1,8 @@
 ---
-// Neutral, standalone document. Intentionally does NOT import the site's
-// global.css or craft theme — pages under /pages are artifacts, not part of
-// the portfolio. Markdown is rendered with the Tailwind Typography plugin
-// (neutral palette), not the craft styles.
-import "../styles/markdown.css";
+// Shared document shell for standalone and legal pages. Uses the same tokens
+// and chrome as the main site so every route matches.
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -15,7 +14,7 @@ interface Props {
 
 const {
   title = "Pages",
-  description = "Farooq Zahid — DevOps Engineer & Software Developer.",
+  description = "Farooq Zahid, DevOps Engineer and Software Developer.",
   noindex = true,
   image = "/assets/home-preview.png",
   jsonLd,
@@ -59,7 +58,7 @@ const jsonLdBlocks = jsonLd
         : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
     />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f4f6f9" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -88,22 +87,14 @@ const jsonLdBlocks = jsonLd
         set:html={JSON.stringify(block)}
       />
     ))}
-
-    <style>
-      html {
-        color-scheme: light;
-      }
-      body {
-        margin: 0;
-        background: #ffffff;
-      }
-    </style>
   </head>
   <body>
-    <div class="mx-auto w-full max-w-3xl px-5 py-12">
-      <div class="prose prose-neutral max-w-none">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <main id="main" class="wrap page">
+      <div class="prose">
         <slot />
       </div>
-    </div>
+    </main>
+    <Footer />
   </body>
 </html>

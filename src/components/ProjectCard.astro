@@ -1,0 +1,100 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+  class?: string;
+}
+
+const { project, class: className } = Astro.props;
+const href = project.detailUrl ?? project.repoUrl;
+const isExternal = href?.startsWith("http") ?? false;
+const Tag = href ? "a" : "div";
+---
+
+<Tag
+  href={href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noreferrer" : undefined}
+  class:list={["project-card", href ? "is-link" : "", className]}
+>
+  <div class="project-meta">
+    <span class="project-type">{project.type}</span>
+    {project.status && <span class="project-status">{project.status}</span>}
+  </div>
+  <h3 class="project-title">{project.title}</h3>
+  <p class="project-description">{project.description}</p>
+  <p class="project-stack">{project.stack}</p>
+</Tag>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 12;
+    height: 100%;
+    padding: 22px;
+    background-color: var(--color-panel);
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .project-type {
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .project-status {
+    color: var(--color-accent);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .project-title {
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.6;
+    transition: color 0.15s ease;
+  }
+
+  .project-description {
+    flex: 1;
+    margin-bottom: 16px;
+    color: var(--color-muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .project-stack {
+    color: var(--color-accent);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .project-card.is-link:hover .project-title {
+    color: var(--color-accent);
+  }
+
+  @media (min-width: 760px) {
+    .project-card {
+      grid-column: span 4;
+    }
+
+    .project-card.span-half {
+      grid-column: span 6;
+    }
+
+    .project-card.span-full {
+      grid-column: span 12;
+    }
+  }
+</style>

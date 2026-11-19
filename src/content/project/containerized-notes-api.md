@@ -1,7 +1,7 @@
 ---
-title: "Containerized Notes API with Terraform, Ansible & Jenkins"
-description: "A Node.js and MongoDB notes service shipped end to end with Docker Compose, Nginx, Terraform, Ansible, and Jenkins."
-seoTitle: "Containerized Notes API on AWS"
+title: "Containerized notes app on AWS with Terraform, Ansible & Jenkins"
+description: "A Node.js and MongoDB notes app shipped end to end with Docker Compose, Nginx, Terraform, Ansible, and Jenkins."
+seoTitle: "Containerized notes app on AWS"
 category: "devops"
 technologies: ["Docker", "Docker Compose", "Node.js", "MongoDB", "Nginx", "Terraform", "Ansible", "Jenkins", "GitHub Actions", "AWS EC2"]
 ---
@@ -13,9 +13,9 @@ provision a server, configure it, and deploy automatically.
 
 ## What I Built
 
-- A **Node.js/Express + Mongoose** notes API with MongoDB, run together using
+- A **Node.js/Express + Mongoose** notes app with MongoDB, run together using
   **Docker Compose**.
-- An **Nginx reverse proxy** in the Compose stack in front of the API.
+- An **Nginx reverse proxy** in the Compose stack in front of the app.
 - An **AWS EC2** instance provisioned with **Terraform**.
 - **Ansible** playbooks that install Docker and Docker Compose on the server and
   pull the app image from Docker Hub.
